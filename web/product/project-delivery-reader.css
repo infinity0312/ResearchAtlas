@@ -1,0 +1,18 @@
+.atlas-projects .project-delivery-reader {
+  margin-block-start: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--ap-line);
+  background: var(--ap-paper);
+  overflow-wrap: anywhere;
+}
+.project-delivery-reader summary { cursor: pointer; font-weight: 640; }
+.project-delivery-content { margin-block-start: 10px; font-size: .88rem; line-height: 1.7; }
+.project-delivery-content :is(p, h4) { margin-block: 5px; }
+.project-delivery-content ul { padding-inline-start: 0; list-style: none; }
+.project-delivery-content li { border-block-start: 1px solid var(--ap-line); padding-block: 10px; }
+.atlas-projects .project-delivery-content blockquote {
+  margin-block: 5px;
+  background: var(--atlas-soft, #eeece6);
+  border-inline-start-color: var(--ap-action);
+}
+.atlas-projects .project-delivery-content a { display: inline-flex; align-items: center; gap: 6px; }

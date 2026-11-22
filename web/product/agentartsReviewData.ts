@@ -26,6 +26,13 @@ export function downloadReviewBrief(
   title: string, review: Review, stale: boolean,
   sourceHref = reviewSourceHref, provenance = 'AgentArts 证据评审',
 ) {
+  downloadMarkdown('ResearchAtlas-' + review.id.replace(/[^a-zA-Z0-9_-]/g, ''), formatReviewBrief(title, review, stale, sourceHref, provenance));
+}
+
+export function formatReviewBrief(
+  title: string, review: Review, stale: boolean,
+  sourceHref = reviewSourceHref, provenance = 'AgentArts 证据评审',
+) {
   const lines = [
     '# ' + plain(title), '',
     '证据评审草稿 · ' + plain(provenance), '',
@@ -52,9 +59,13 @@ export function downloadReviewBrief(
         binding ? '采纳记录 · ' + plain(binding) : '采纳记录 · 尚未采纳');
     }
   }
-  const handle = URL.createObjectURL(new Blob([lines.join('\n') + '\n'], {type: 'text/markdown;charset=utf-8'}));
+  return lines.join('\n') + '\n';
+}
+
+export function downloadMarkdown(filename: string, markdown: string) {
+  const handle = URL.createObjectURL(new Blob([markdown], {type: 'text/markdown;charset=utf-8'}));
   const link = document.createElement('a');
-  link.download = 'ResearchAtlas-' + review.id.replace(/[^a-zA-Z0-9_-]/g, '') + '.md';
+  link.download = filename + '.md';
   link.href = handle;
   link.click();
   window.setTimeout(() => URL.revokeObjectURL(handle), 1000);

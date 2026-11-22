@@ -14,8 +14,8 @@ test('UTC calendar ticks refine with zoom and support single-date data',()=>{
 test('more than six directions stay selectable and requests remain bounded',async({page})=>{
  await page.addInitScript(()=>{sessionStorage.setItem('atlas.terminal.entered','1');localStorage.setItem('atlas.trends.selection',JSON.stringify({ids:['s0','s1','s2','s3','s4','s5'],start:'2020',end:'2025',interval:'year'}))});
  const names=['A','B','C','D','E','F','机器学习原子势','材料逆向设计'];
- const rows=names.map((name,i)=>({id:'s'+i,name,domain_id:'molecules',color:'#537f70',is_root:false}));
- await page.route('**/api/trends/series',r=>r.fulfill({json:[{id:'root',name:'分子与材料 · 全领域',domain_id:'molecules',is_root:true},...rows]}));
+ const rows=names.map((name,i)=>({id:'s'+i,name,query:'ti:"'+name+'"',domain_id:'molecules',color:'#537f70',is_root:false}));
+ await page.route('**/api/trends/series',r=>r.fulfill({json:[{id:'root',name:'分子与材料 · 全领域',query:'cat:cond-mat.mtrl-sci',color:'#537f70',domain_id:'molecules',is_root:true},...rows]}));
  const batches:number[]=[];
  await page.route('**/api/trends/data?*',r=>{const ids=new URL(r.request().url()).searchParams.getAll('ids');batches.push(ids.length);return r.fulfill({json:{series:rows.filter(row=>ids.includes(row.id)).map(row=>({...row,points:[{period:'2020',count:1,partial:false}],growth:null}))}})});
  await page.goto('/#page=trends');await page.getByRole('button',{name:'展开或收起：分子与材料 · 全领域',exact:true}).click();
