@@ -1,6 +1,6 @@
 import {useEditionSwatch} from '../ui/industrial/colors';
 import {type RefObject} from 'react';
-import {BriefcaseBusiness,Activity,FolderOpen,Menu,Settings2,X,Plus,ChevronRight,Search,Compass,LayoutDashboard,Network,TrendingUp,BookOpen,Bookmark,NotebookPen} from 'lucide-react';
+import {BriefcaseBusiness,Activity,FolderOpen,Menu,Settings2,X,Plus,ChevronRight,Search,Compass,LayoutDashboard,Network,TrendingUp,BookOpen,Bookmark,NotebookPen,Presentation} from 'lucide-react';
 import {type Domain} from '../api';
 import {pageLabels as labels,type Page} from './useWorkspaceRoute';
 const pages:{id:Page;label:string;icon:typeof Compass}[]=[{id:'projects',label:'研发项目',icon:BriefcaseBusiness},{id:'overview',label:'研究概览',icon:LayoutDashboard},{id:'papers',label:'发现论文',icon:Compass},{id:'map',label:'领域地图',icon:Network},{id:'trends',label:'领域趋势',icon:TrendingUp},{id:'surveys',label:'综述知识库',icon:BookOpen},{id:'saved',label:'我的收藏',icon:Bookmark},{id:'notes',label:'笔记系列',icon:NotebookPen}];
@@ -13,7 +13,9 @@ export function WorkspaceSidebar({navRef,compact,navOpen,setNavOpen,page,domain,
    <div className="nav-label">工作台</div><nav>{pages.map(({id,label,icon:Icon})=><button key={id} title={label} aria-label={label} aria-current={page===id?'page':undefined} className={'nav-item '+(page===id?'active':'')} onClick={()=>navigate(id)}><Icon size={19}/><span>{label}</span>{id==='papers'&&<span className="tiny-arrow">↗</span>}</button>)}</nav>
    <div className="nav-label domains-label">研究领域<button className="icon-button" aria-label="添加研究领域" onClick={onAddDomain}><Plus size={15}/></button></div>
    <div className="domain-nav">{domains.map(d=><button key={d.id} className={page==='papers'&&domain===d.id?'selected':''} onClick={()=>onDomain(d.id)} title={d.name}><i style={{background:swatch(d.color)}}/><span>{d.name}</span><small>{d.count}</small></button>)}</div>
-   <div className="sidebar-bottom"><button className={'nav-item '+(page==='jobs'?'active':'')} onClick={()=>navigate('jobs')} title="后台任务"><Activity size={19}/><span>后台任务</span>{running>0&&<b className="count">{running}</b>}</button><button className={'nav-item '+(page==='settings'?'active':'')} onClick={()=>navigate('settings')} title="设置"><Settings2 size={19}/><span>设置与连接</span></button><button className="nav-item" onClick={onOpenData}><FolderOpen size={19}/><span>本地数据</span></button><div className="local-status"><span className={worker?'status-dot':'status-dot amber'}/><span>{worker?'本地工作台 · 后台在线':'本地工作台 · 后台未就绪'}</span></div></div>
+   <div className="sidebar-bottom">
+    <a className="nav-item" href="/showcase/" aria-label="产品展示" title="产品展示"><Presentation size={19} aria-hidden="true"/><span>产品展示</span></a>
+    <button className={'nav-item '+(page==='jobs'?'active':'')} onClick={()=>navigate('jobs')} title="后台任务"><Activity size={19}/><span>后台任务</span>{running>0&&<b className="count">{running}</b>}</button><button className={'nav-item '+(page==='settings'?'active':'')} onClick={()=>navigate('settings')} title="设置"><Settings2 size={19}/><span>设置与连接</span></button><button className="nav-item" onClick={onOpenData}><FolderOpen size={19}/><span>本地数据</span></button><div className="local-status"><span className={worker?'status-dot':'status-dot amber'}/><span>{worker?'本地工作台 · 后台在线':'本地工作台 · 后台未就绪'}</span></div></div>
   </aside>
 )}
 type HeaderProps={navToggle:RefObject<HTMLButtonElement|null>;navOpen:boolean;setNavOpen:(value:boolean)=>void;page:Page;onSearch:()=>void};

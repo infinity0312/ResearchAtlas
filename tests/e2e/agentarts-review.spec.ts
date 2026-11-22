@@ -1,4 +1,5 @@
 import {test,expect} from '@playwright/test';
+import {readFile} from 'node:fs/promises';
 
 test('project workspace displays an AgentArts draft and requires a separate adoption action',async({page,request,baseURL})=>{
  expect(new URL(baseURL!).port).toBe('8770');
@@ -45,7 +46,36 @@ test('project workspace displays an AgentArts draft and requires a separate adop
  await expect(panel.getByRole('link',{name:'查看该版本原页'})).toHaveAttribute('href','/api/paper/pdf?id=2609.00000&version=1#page=2');
  await panel.getByRole('button',{name:'采纳此证据'}).click();
  await expect(panel.getByText('已采纳',{exact:true})).toBeVisible();
+ const [download]=await Promise.all([
+  page.waitForEvent('download'),
+  panel.getByRole('button',{name:'导出草稿'}).click(),
+ ]);
+ const draftText=await readFile((await download.path())!,'utf8');
+ expect(draftText).toContain('version=1#page=2');
+ expect(draftText).toContain('采纳记录 · attached');
  expect(starts).toBe(1);
  expect(binds).toBe(1);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+});
+
+test('a failed review status read exposes an explicit reconnect action',async({page,request})=>{
+ const created=await request.post('/api/projects',{headers:{'X-Atlas-Client':'1'},data:{
+  title:'AgentArts 状态恢复夹具',scenario:'material_substitution',
+  question:'材料在给定工况下是否可以通过性能测试？',constraints:'使用隔离数据',
+  criteria:[{id:'thermal',label:'导热表现'}],
+ }});
+ expect(created.ok(),await created.text()).toBeTruthy();
+ const project=await created.json();
+ let available=false;
+ await page.route('**/api/projects/'+project.id+'/agentarts',route=>available
+  ?route.fulfill({json:{enabled:true,configured:true,review:null}})
+  :route.fulfill({status:503,json:{detail:'隔离夹具暂不可用'}}));
+ await page.goto('/#page=projects&project_id='+project.id);
+ await page.getByRole('button',{name:'核对证据',exact:true}).click();
+ const panel=page.getByRole('region',{name:'AgentArts 证据评审'});
+ await expect(panel.getByRole('alert')).toHaveText('暂时无法读取评审状态。');
+ available=true;
+ await panel.getByRole('button',{name:'重新连接'}).click();
+ await panel.getByRole('searchbox',{name:'检索关键词'}).fill('thermal');
+ await expect(panel.getByRole('button',{name:'运行 AgentArts 评审'})).toBeEnabled();
 });

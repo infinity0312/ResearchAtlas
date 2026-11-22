@@ -7,4 +7,11 @@ const pdfAssets=()=>{
  for(const dir of ['cmaps','standard_fonts','wasm'])for(const file of readdirSync(`node_modules/pdfjs-dist/${dir}`))assets.set(`pdfjs/${dir}/${file}`,readFileSync(`node_modules/pdfjs-dist/${dir}/${file}`));
  return {name:'local-pdf-assets',generateBundle(){for(const [fileName,source] of assets)this.emitFile({type:'asset' as const,fileName,source})},configureServer(server){server.middlewares.use((req,res,next)=>{const data=assets.get((req.url||'').split('?')[0].slice(1));if(!data)return next();if(req.url?.endsWith('.wasm'))res.setHeader('Content-Type','application/wasm');res.end(data)})}};
 };
-export default defineConfig({plugins:[react(),pdfAssets()],server:{proxy:{'/api':'http://127.0.0.1:8765'}},build:{rollupOptions:{output:{manualChunks:{react:['react','react-dom'],charts:['echarts']}}}}});
+export default defineConfig({
+ plugins:[react(),pdfAssets()],
+ server:{proxy:{'/api':'http://127.0.0.1:8765'}},
+ build:{rollupOptions:{
+  input:{workspace:'index.html',showcase:'showcase/index.html'},
+  output:{manualChunks:{react:['react','react-dom'],charts:['echarts']}},
+ }},
+});
