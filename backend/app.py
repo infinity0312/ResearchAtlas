@@ -89,6 +89,8 @@ from .analysis_editing import router as analysis_editing_router
 app.include_router(analysis_editing_router)
 from .product.router import router as product_router
 app.include_router(product_router)
+from .product.agentarts_review import router as agentarts_review_router
+app.include_router(agentarts_review_router)
 app.add_middleware(TrustedHostMiddleware,allowed_hosts=['127.0.0.1','localhost','testserver'])
 
 @app.middleware('http')

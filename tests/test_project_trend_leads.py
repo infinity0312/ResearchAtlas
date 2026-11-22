@@ -193,7 +193,7 @@ def test_v6_to_v7_migration_preserves_prior_data_and_missing_table_fails_closed(
         assert run_migrations(engine, old, MIGRATIONS[:6]) == list(range(1, 7))
         with engine.begin() as conn:
             conn.exec_driver_sql("INSERT INTO settings(key,value) VALUES ('pre-trend-lead','{}')")
-        assert run_migrations(engine, Base.metadata) == [7, 8]
+        assert run_migrations(engine, Base.metadata) == [7, 8, 9]
         assert run_migrations(engine, Base.metadata) == []
         with engine.begin() as conn:
             assert conn.exec_driver_sql("SELECT value FROM settings WHERE key='pre-trend-lead'").scalar() == '{}'

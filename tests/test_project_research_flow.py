@@ -147,7 +147,7 @@ def test_candidate_migration_upgrades_v5_and_missing_table_fails_closed(tmp_path
         assert run_migrations(engine, legacy, MIGRATIONS[:5]) == [1, 2, 3, 4, 5]
         with engine.begin() as connection:
             connection.exec_driver_sql("INSERT INTO settings(key,value) VALUES ('flow-preserved','{}')")
-        assert run_migrations(engine, Base.metadata) == [6, 7, 8]
+        assert run_migrations(engine, Base.metadata) == [6, 7, 8, 9]
         assert run_migrations(engine, Base.metadata) == []
         assert inspect(engine).has_table('project_candidates')
         with engine.begin() as connection:

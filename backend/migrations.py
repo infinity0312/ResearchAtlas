@@ -103,6 +103,12 @@ MIGRATIONS = (
             "analysis_requested", "status", "analysis_status", "analysis_blocker", "revision", "created", "updated",
         )
     ), indexes=("ix_project_paper_intakes_project_id", "ix_project_paper_intakes_download_job_id")),
+    Migration(9, "agentarts_project_review_drafts", required_columns=tuple(
+        ("agentarts_reviews", column) for column in (
+            "id", "project_id", "project_revision", "expected_revision", "query", "state",
+            "execution_id", "sources", "assessments", "bindings", "error", "created",
+        )
+    ), indexes=("ix_agentarts_reviews_project_id",)),
 )
 
 

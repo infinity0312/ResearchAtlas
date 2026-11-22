@@ -178,7 +178,7 @@ def test_v7_to_v8_adds_intakes_without_rewriting_old_data(tmp_path):
             if table.name != 'project_paper_intakes': table.to_metadata(old)
         assert run_migrations(engine, old, MIGRATIONS[:7]) == list(range(1, 8))
         with engine.begin() as conn: conn.exec_driver_sql("INSERT INTO settings(key,value) VALUES ('pre-intake','{}')")
-        assert run_migrations(engine, Base.metadata) == [8]
+        assert run_migrations(engine, Base.metadata) == [8, 9]
         assert run_migrations(engine, Base.metadata) == []
         with engine.begin() as conn:
             assert conn.exec_driver_sql("SELECT value FROM settings WHERE key='pre-intake'").scalar() == '{}'

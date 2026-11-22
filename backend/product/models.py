@@ -45,6 +45,22 @@ class ProjectEvidence(Base):
     __table_args__ = (UniqueConstraint('project_id', 'analysis_id', 'claim_index', 'criterion_id'),)
 
 
+class AgentArtsReview(Base):
+    __tablename__ = 'agentarts_reviews'
+    id: Mapped[str] = mapped_column(String, primary_key=True, default=uid)
+    project_id: Mapped[str] = mapped_column(ForeignKey('research_projects.id'), index=True)
+    project_revision: Mapped[int] = mapped_column(Integer)
+    expected_revision: Mapped[int] = mapped_column(Integer)
+    query: Mapped[str] = mapped_column(String(160))
+    state: Mapped[str] = mapped_column(String(16), default='running')
+    execution_id: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    sources: Mapped[list] = mapped_column(JSON, default=list)
+    assessments: Mapped[list] = mapped_column(JSON, default=list)
+    bindings: Mapped[dict] = mapped_column(JSON, default=dict)
+    error: Mapped[str] = mapped_column(Text, default='')
+    created: Mapped[str] = mapped_column(String, default=now)
+
+
 class ProjectReview(Base):
     __tablename__ = 'project_reviews'
     id: Mapped[str] = mapped_column(String, primary_key=True, default=uid)

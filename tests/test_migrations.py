@@ -21,10 +21,10 @@ def migration_engine(tmp_path):
 
 
 def test_fresh_schema_and_repeat_startup(migration_engine):
-    assert run_migrations(migration_engine, Base.metadata) == [1, 2, 3, 4, 5, 6, 7, 8]
+    assert run_migrations(migration_engine, Base.metadata) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
     assert run_migrations(migration_engine, Base.metadata) == []
     assert migration_status(migration_engine) == {
-        "current_version": 8, "latest_version": 8, "pending_versions": [], "compatible": True,
+        "current_version": 9, "latest_version": 9, "pending_versions": [], "compatible": True,
     }
     inspector = inspect(migration_engine)
     assert "ix_analyses_current" in {i["name"] for i in inspector.get_indexes("analyses")}
@@ -43,7 +43,7 @@ def test_legacy_schema_adds_columns_without_rewriting_records(migration_engine):
             connection.exec_driver_sql(f"CREATE TABLE {table} ({definition})")
         connection.exec_driver_sql("INSERT INTO papers(id,title) VALUES ('preserved', 'Existing evidence')")
         connection.exec_driver_sql("INSERT INTO domains(id,name) VALUES ('existing', 'Existing domain')")
-    assert run_migrations(migration_engine, Base.metadata) == [1, 2, 3, 4, 5, 6, 7, 8]
+    assert run_migrations(migration_engine, Base.metadata) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
     with migration_engine.connect() as connection:
         assert connection.exec_driver_sql(
             "SELECT title, date_basis FROM papers WHERE id='preserved'"
@@ -64,7 +64,8 @@ def test_changed_manifest_fails_closed(migration_engine):
 def test_newer_database_is_rejected_before_creating_application_tables(migration_engine):
     run_migrations(migration_engine, Base.metadata)
     with migration_engine.begin() as connection:
-        connection.exec_driver_sql("UPDATE schema_migrations SET version=9 WHERE version=8")
+        connection.exec_driver_sql("UPDATE schema_migrations SET version=? WHERE version=?",
+                                   (len(MIGRATIONS) + 1, len(MIGRATIONS)))
     metadata = MetaData()
     Table("must_not_be_created", metadata, Column("id", Integer, primary_key=True))
     with pytest.raises(MigrationError, match="newer"):
@@ -74,14 +75,14 @@ def test_newer_database_is_rejected_before_creating_application_tables(migration
 
 def test_migration_ddl_and_history_roll_back_together(migration_engine):
     run_migrations(migration_engine, Base.metadata)
-    broken = Migration(9, "broken", statements=(
+    broken = Migration(len(MIGRATIONS) + 1, "broken", statements=(
         "CREATE TABLE should_rollback (id INTEGER)",
         "INSERT INTO table_that_does_not_exist VALUES (1)",
     ))
     with pytest.raises(OperationalError):
         run_migrations(migration_engine, Base.metadata, (*MIGRATIONS, broken))
     assert not inspect(migration_engine).has_table("should_rollback")
-    assert migration_status(migration_engine)["current_version"] == 8
+    assert migration_status(migration_engine)["current_version"] == 9
 
 
 def test_missing_history_and_schema_drift_are_detected(migration_engine):
@@ -100,14 +101,14 @@ def test_metadata_reset_also_resets_migration_history(migration_engine):
     run_migrations(migration_engine, Base.metadata)
     Base.metadata.drop_all(migration_engine)
     assert not inspect(migration_engine).has_table(LEDGER_TABLE)
-    assert run_migrations(migration_engine, Base.metadata) == [1, 2, 3, 4, 5, 6, 7, 8]
+    assert run_migrations(migration_engine, Base.metadata) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
 def test_competing_startups_serialize_migrations(migration_engine):
     with ThreadPoolExecutor(max_workers=2) as pool:
         results = list(pool.map(lambda _: run_migrations(migration_engine, Base.metadata), range(2)))
-    assert sorted(results, key=len) == [[], [1, 2, 3, 4, 5, 6, 7, 8]]
-    assert migration_status(migration_engine)["current_version"] == 8
+    assert sorted(results, key=len) == [[], [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+    assert migration_status(migration_engine)["current_version"] == 9
 
 
 def test_model_usage_ledger_is_versioned_and_missing_columns_fail_closed(migration_engine):
@@ -120,7 +121,7 @@ def test_model_usage_ledger_is_versioned_and_missing_columns_fail_closed(migrati
 
 def test_legacy_v3_upgrade_adds_product_tables_without_rewriting_research(migration_engine):
     product_tables = {table for m in MIGRATIONS[3:] for table, _ in m.required_columns}
-    assert len(product_tables) == 9
+    assert len(product_tables) == 10
     legacy = MetaData()
     for table in Base.metadata.sorted_tables:
         if table.name not in product_tables:
@@ -129,7 +130,7 @@ def test_legacy_v3_upgrade_adds_product_tables_without_rewriting_research(migrat
     with migration_engine.begin() as connection:
         connection.exec_driver_sql("INSERT INTO settings(key,value) VALUES ('preserved-product-upgrade', '{\"source\":\"old-evidence\"}')")
     assert not any(inspect(migration_engine).has_table(name) for name in product_tables)
-    assert run_migrations(migration_engine, Base.metadata) == [4, 5, 6, 7, 8]
+    assert run_migrations(migration_engine, Base.metadata) == [4, 5, 6, 7, 8, 9]
     with migration_engine.connect() as connection:
         assert connection.exec_driver_sql("SELECT value FROM settings WHERE key='preserved-product-upgrade'").scalar() == '{"source":"old-evidence"}'
     assert all(inspect(migration_engine).has_table(name) for name in product_tables)
@@ -246,7 +247,7 @@ def test_v7_to_v8_adds_intakes_without_rewriting_frozen_trend_sources(migration_
             id='frozen-lead', project_id='intake-upgrade', source_key='a' * 64,
             snapshot=frozen, reason='Original attention reason', status='kept', revision=4))
     assert not inspect(migration_engine).has_table('project_paper_intakes')
-    assert run_migrations(migration_engine, Base.metadata) == [8]
+    assert run_migrations(migration_engine, Base.metadata) == [8, 9]
     with migration_engine.connect() as connection:
         assert connection.exec_driver_sql(
             "SELECT revision,status FROM research_projects WHERE id='intake-upgrade'"
