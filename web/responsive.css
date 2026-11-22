@@ -1,0 +1,126 @@
+/* Shared viewport rules; preserve reading widths instead of stretching text. */
+:root{--workspace-rail:clamp(210px,16vw,250px);--workspace-gap:clamp(18px,2.7vw,48px)}
+.app-shell .sidebar{width:var(--workspace-rail)}
+.app-shell .main-shell{margin-left:var(--workspace-rail)}
+.app-shell main{width:100%;max-width:1680px;padding:clamp(24px,3vw,46px) var(--workspace-gap) 0}
+.app-shell .topbar{padding-inline:var(--workspace-gap);gap:14px}
+.app-shell .page-heading{gap:20px;flex-wrap:wrap;align-items:center}
+.app-shell .page-heading>div{width:auto}
+.app-shell .heading-actions{display:flex;flex-wrap:wrap;gap:10px}
+.app-shell .filter-bar,.app-shell .panel-title,.app-shell .graph-header-actions,.app-shell .form-actions{flex-wrap:wrap}
+.app-shell .panel-title>div,.app-shell .filter-group,.app-shell .chart-grid>*{min-width:0}
+.app-shell .domain-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.app-shell .chart-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+.app-shell .metrics{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+.app-shell .graph-stage,.app-shell .trend-panel{min-width:0}
+.app-shell .relation-canvas{height:clamp(350px,62dvh,740px)}
+.app-shell .graph-expanded .relation-canvas{height:100%;min-height:260px}
+.app-shell .list-toolbar{flex-wrap:wrap}
+.app-shell .filter-group select,.app-shell .domain-multi-trigger{max-width:100%}
+.app-shell .job-row{gap:14px;flex-wrap:wrap}
+.app-shell .job-main{flex:1 1 220px}
+.app-shell .job-date{margin-left:auto}
+.overlay{padding:clamp(8px,2vw,30px)}
+.overlay .modal{max-width:100%;max-height:calc(100dvh - 2 * clamp(8px,2vw,30px))}
+.overlay .modal:has(>.detail){height:calc(100dvh - 2 * clamp(8px,2vw,30px));max-height:calc(100dvh - 2 * clamp(8px,2vw,30px))}
+.overlay .pdf-reader .pdf-page-host{height:clamp(180px,60dvh,900px);max-height:60dvh;min-height:180px}
+.overlay .tabs{gap:clamp(14px,2vw,27px);padding-inline:clamp(14px,2vw,32px)}
+.mobile-nav-toggle,.mobile-nav-close,.nav-backdrop{display:none}
+@media(max-width:900px){
+ .app-shell .main-shell{margin-left:0}
+ .app-shell .sidebar{width:min(290px,85vw);padding:24px 18px;align-items:stretch;z-index:61;transform:translateX(-100%);visibility:hidden;transition:transform .2s ease,visibility .2s}
+ .app-shell.nav-open .sidebar{transform:translateX(0);visibility:visible}
+ .app-shell .sidebar .brand span,.app-shell .sidebar .nav-item span,.app-shell .sidebar .nav-label,.app-shell .sidebar .domain-nav{display:block}
+ .app-shell .sidebar .workspace,.app-shell .sidebar .local-status,.app-shell .sidebar .domains-label{display:flex}
+ .app-shell .sidebar .count{display:inline-block}
+ .app-shell .sidebar nav{margin-top:0}
+ .app-shell .sidebar .workspace{margin:24px 0}
+ .app-shell .sidebar .nav-item{justify-content:flex-start;min-height:44px}
+ .app-shell .sidebar .brand{padding-right:26px}
+ .app-shell .mobile-nav-toggle,.app-shell .mobile-nav-close{display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
+ .app-shell .mobile-nav-close{position:absolute;right:12px;top:20px}
+ .app-shell .nav-backdrop{display:block;position:fixed;inset:0;z-index:60;background:#163b2738;backdrop-filter:blur(3px)}
+ .app-shell .breadcrumb{margin-right:auto}
+ .app-shell .topbar{height:64px}
+ .app-shell .panel-title{gap:14px}
+}
+@media(max-width:600px){
+ :root{--workspace-gap:14px}
+ .app-shell .topbar .search-shortcut span,.app-shell .topbar kbd{display:none}
+ .app-shell .page-heading{gap:16px}
+ .app-shell .heading-actions{width:100%}
+ .app-shell .heading-actions .button{flex:1;justify-content:center}
+ .app-shell .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .app-shell .segments{display:flex;max-width:100%;flex-wrap:wrap}
+ .app-shell .segments button{flex:1;white-space:nowrap}
+ .app-shell .graph-header-actions{gap:8px}
+ .app-shell .graph-header-actions .button{padding:8px;font-size:12px}
+ .app-shell .panel-title{padding:18px}
+ .app-shell .job-row{padding:18px}
+ .app-shell .job-main{flex-basis:calc(100% - 60px)}
+ .app-shell .job-date{margin-left:50px}
+ .app-shell .form-actions{align-items:stretch;gap:12px}
+ .app-shell .form-actions .checkbox{flex-basis:100%}
+ .overlay .modal-head{padding:12px 16px}
+ .overlay .form-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){.app-shell .sidebar{transition:none}}
+/* Independent block sizes prevent expanding controls from stretching charts. */
+.app-shell .trends-layout{grid-template-columns:clamp(225px,20vw,290px) minmax(0,1fr);align-items:start;gap:clamp(16px,2vw,28px);margin-bottom:22px}
+.app-shell .trend-controls{display:flex;flex-direction:column;min-width:0;min-height:0}
+.app-shell .trend-choices{flex:none;min-height:0;height:auto;max-height:clamp(260px,48dvh,520px);scrollbar-gutter:stable;align-content:start;overflow:auto;padding-right:8px}
+.app-shell .trend-choices>div{min-width:0;gap:6px;padding:8px 0}
+.app-shell .trend-choices label{min-width:0;line-height:1.65;overflow-wrap:anywhere}
+.app-shell .trend-choices label input,.app-shell .trend-choices button{flex-shrink:0}
+.app-shell .trend-main{display:flex;flex-direction:column;min-width:0;padding:clamp(18px,2vw,28px)}
+.app-shell .trend-toolbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;align-items:end;gap:12px}
+.app-shell .trend-toolbar label{min-width:0}
+.app-shell .trend-toolbar input,.app-shell .trend-toolbar select,.app-shell .trend-toolbar>.button{min-height:42px;margin:0;box-sizing:border-box}
+.app-shell .trend-quality{display:flex;align-items:flex-start;gap:8px;line-height:1.8}
+.app-shell .trend-quality input{flex:none;margin-top:5px}
+.app-shell .macro-chart{height:clamp(330px,40dvh,470px);min-width:0;flex:0 0 auto;min-height:330px;max-height:470px;overflow:hidden}
+.app-shell .trend-source{margin-top:16px}
+.app-shell .panel-title .tag{white-space:normal;line-height:1.6}
+.app-shell .panel-title .job-actions{justify-content:flex-end}
+.app-shell .graph-header-actions,.app-shell .heading-actions{min-width:0}
+.app-shell .trend-editor{top:50%;transform:translate(-50%,-50%);max-height:calc(100dvh - 32px);overflow:auto}
+@media(max-width:1200px){.app-shell .trend-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}.app-shell .trend-toolbar>.button{grid-column:1/-1;justify-content:center}}
+@media(max-width:1000px){.app-shell .trends-layout{grid-template-columns:minmax(0,1fr)}.app-shell .trend-choices{height:auto;flex:none;max-height:240px;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr))}.app-shell .trend-toolbar{grid-template-columns:repeat(3,minmax(0,1fr)) auto}.app-shell .trend-toolbar>.button{grid-column:auto}}
+@media(max-width:600px){.app-shell .trend-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.app-shell .trend-toolbar>label:first-child{grid-column:1/-1}.app-shell .trend-toolbar>.button{grid-column:1/-1}.app-shell .trend-choices{grid-template-columns:minmax(0,1fr)}.app-shell .job-actions{justify-content:flex-start}.app-shell .job-actions>.tag{flex-basis:100%}}
+/* Expanded content owns its height; only tables/code use local horizontal scrolling. */
+.app-shell details,.overlay details{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.app-shell details::details-content,.overlay details::details-content{transition:none}
+.app-shell details[open]::details-content,.overlay details[open]::details-content{height:auto;overflow:visible}
+.app-shell .trend-details{overflow-x:auto;overscroll-behavior-x:contain}
+.app-shell .trend-details table{min-width:460px}
+.app-shell .graph-paper-list[open]{max-height:min(420px,50dvh);overflow:auto}
+.app-shell .paper-legend{max-width:calc(100% - 28px)}
+.app-shell .paper-legend-list{max-height:min(310px,40dvh);overflow:auto}
+.app-shell .method-mappings form{flex-wrap:wrap;gap:10px}
+.app-shell .method-mappings input{min-width:0}
+.overlay .markdown-body pre,.overlay .markdown-body table{max-width:100%;overflow:auto}
+@media(max-width:600px){.app-shell .graph-paper-list button{white-space:normal;overflow-wrap:anywhere}.app-shell .method-mappings form>span{flex-basis:100%}}
+
+/* Expanded evidence belongs to its own card, never to its neighbours. */
+.app-shell .signal-profiles,.app-shell .signal-source-grid{align-items:start}
+
+.app-shell .relation-panel:not(.graph-expanded) .graph-workspace{align-items:start}
+.app-shell .relation-panel:not(.graph-expanded) .atlas-network{flex:none;height:clamp(390px,62dvh,740px)}
+
+/* Only the control panel stretches: its contents cannot size the grid row. */
+@media(min-width:1001px){
+ .app-shell .trends-layout{align-items:stretch}
+ .app-shell .trend-controls{contain:size;overflow:hidden}
+ .app-shell .trend-choices{flex:1;min-height:0;height:0;max-height:none}
+}
+.app-shell .trend-main{position:relative}
+.trend-refresh-state{position:absolute;right:24px;top:4px;font-size:10px;color:var(--muted);pointer-events:none}
+
+/* A collapsed rail must not size the graph through wrapped, invisible text. */
+.app-shell .relation-panel.filters-hidden .graph-controls{height:0;min-height:0;contain:size;padding-block:0}
+.app-shell .relation-panel:not(.graph-expanded) .graph-controls{max-height:calc(clamp(390px,62dvh,740px) + 100px);overflow-y:auto}
+
+/* The PDF owns a viewport-height reading surface; metadata remains above it. */
+.overlay .detail[data-reading-mode="pdf"] .pdf-reader{height:100dvh;display:flex;flex-direction:column}
+.overlay .detail[data-reading-mode="pdf"] .pdf-page-host{flex:1;min-height:0;height:auto;max-height:none}
+.overlay .detail[data-reading-mode="pdf"] .pdf-toolbar,.overlay .detail[data-reading-mode="pdf"] .pdf-mark-list{flex-shrink:0}

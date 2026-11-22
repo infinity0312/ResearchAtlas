@@ -1,0 +1,9 @@
+.model-budget-settings>.form{padding:12px 25px 25px}
+.model-budget-settings>.notice{margin:12px 25px 25px}
+.model-usage-totals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:12px 25px 20px;border-bottom:1px solid var(--line)}
+.model-usage-totals span{display:block;font-size:11px;color:var(--muted);margin-bottom:9px}
+.model-usage-totals strong{font-size:21px;font-weight:550;color:var(--ink);font-variant-numeric:tabular-nums}
+.model-usage-totals small{grid-column:1/-1;font-size:10px;line-height:1.7;color:var(--muted)}
+.model-budget-note{font-size:11px;line-height:1.9;color:var(--muted)}
+.model-budget-settings>.model-budget-note{padding:12px 25px}
+@media(max-width:600px){.model-usage-totals{grid-template-columns:repeat(2,minmax(0,1fr))}.model-budget-settings>.form{padding:12px 20px 20px}.model-usage-totals{padding:12px 20px 20px}}

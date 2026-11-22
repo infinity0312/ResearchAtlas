@@ -1,0 +1,38 @@
+import {test,expect} from '@playwright/test';
+test('published analysis can be edited, previewed, reopened and compared with history',async({page})=>{
+ await page.goto('/#page=papers');
+ await page.getByRole('button',{name:'Equivariant models for molecular prediction',exact:true}).click();
+ await page.getByRole('button',{name:'编辑分析',exact:true}).click();
+ await page.getByLabel('编辑分析摘要').fill('用户修改后的摘要');
+ await page.getByLabel('编辑全文研读').fill('## 已编辑全文\n\n保存后的正文 $E=mc^2$');
+ await page.getByRole('button',{name:'预览排版'}).click();
+ await expect(page.locator('.analysis-editor-preview')).toContainText('保存后的正文');
+ await page.getByRole('button',{name:'继续编辑'}).click();
+ await page.getByRole('button',{name:'关闭并保留草稿'}).click();
+ await page.getByRole('button',{name:'编辑分析',exact:true}).click();
+ await expect(page.getByLabel('编辑分析摘要')).toHaveValue('用户修改后的摘要');
+ await page.getByRole('button',{name:'保存修改',exact:true}).click();
+ await expect(page.locator('.analysis-summary')).toContainText('用户修改后的摘要');
+ await expect(page.locator('.fulltext-review')).toContainText('保存后的正文');
+ await page.reload();
+ await page.getByRole('button',{name:'Equivariant models for molecular prediction',exact:true}).click();
+ await expect(page.locator('.analysis-summary')).toContainText('用户修改后的摘要');
+ await page.getByRole('button',{name:'版本历史',exact:true}).click();
+ const versions=page.locator('.analysis-history-row');await expect(versions).toHaveCount(2);
+ await versions.last().click();
+ await expect(page.getByRole('dialog',{name:'分析版本历史'})).toContainText('这是浏览器测试数据');
+ await page.getByRole('dialog',{name:'分析版本历史'}).getByRole('button',{name:'关闭',exact:true}).click();
+ await page.setViewportSize({width:390,height:844});
+ await page.getByRole('button',{name:'编辑分析',exact:true}).click();
+ await expect(page.getByLabel('编辑全文研读')).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBeTruthy();
+});
+test('conflicting save retains the user draft',async({page})=>{
+ await page.goto('/#page=papers');await page.getByRole('button',{name:'Equivariant models for molecular prediction',exact:true}).click();
+ await page.getByRole('button',{name:'编辑分析',exact:true}).click();
+ await page.getByLabel('编辑分析摘要').fill('冲突时保留的内容');
+ await page.route('**/api/analysis/*/edit',route=>route.fulfill({status:409,json:{detail:'已有新的分析版本；你的草稿已保留，请查看最新版本后合并'}}));
+ await page.getByRole('button',{name:'保存修改',exact:true}).click();
+ await expect(page.getByRole('dialog',{name:'编辑论文分析'}).getByRole('alert')).toContainText('已有新的分析版本');
+ await expect(page.getByLabel('编辑分析摘要')).toHaveValue('冲突时保留的内容');
+});

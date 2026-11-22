@@ -1,0 +1,277 @@
+@font-face {
+  font-family: "Saira Atlas";
+  src: url("./Saira.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 50% 125%;
+  font-display: swap;
+  unicode-range: U+0020-007E;
+}
+
+:root[data-edition=industrial] {
+  --atlas-rule-strong: #aaa8a0;
+  --atlas-dark: #262626;
+  --atlas-dark-hover: #3b3b39;
+  --atlas-field-font: "Saira Atlas", Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+  --ef-panel: var(--atlas-paper);
+  --ef-ink: var(--atlas-ink);
+  --ef-ink-2: var(--atlas-muted);
+  --ef-chip: var(--atlas-line);
+  --ef-signal: var(--industrial-signal);
+  --ef-on-signal: var(--atlas-ink);
+  --ef-trace: var(--atlas-action);
+  --ef-font-ui: var(--atlas-field-font);
+  --ef-t-field: 13px;
+  --ef-wide: 112%;
+  --ef-wider: 125%;
+  --ef-mech: var(--industrial-mech);
+  --ef-snap: var(--industrial-snap);
+  --ef-tri-a: #9e566e;
+  --ef-tri-b: var(--industrial-signal);
+  --ef-tri-c: #54718c;
+  --panel: var(--atlas-paper);
+}
+
+/* One press surface, one visual accent, and tabular type for coordinates. */
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.eyebrow,.paper-meta,.scope-note,.linked-source-coordinate,.projects-revision,.job-date,.metric strong,.page-footer) {
+  font-family: var(--atlas-field-font);
+  font-variant-numeric: tabular-nums;
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.label,.eyebrow,.linked-source-kicker,.paper-brief-label,.pv-eyebrow) {
+  color: var(--atlas-muted);
+}
+:root[data-edition=industrial] .app-shell .topbar .search-shortcut {
+  color: var(--atlas-paper);
+  background: var(--atlas-dark);
+  border: 1px solid var(--atlas-dark);
+  font-weight: 620;
+}
+:root[data-edition=industrial] .app-shell .topbar .search-shortcut:hover { background: var(--atlas-dark-hover); }
+:root[data-edition=industrial] .app-shell .topbar .search-shortcut kbd {
+  color: var(--atlas-paper);
+  background: transparent;
+  border: 1px solid #a7a59c;
+  border-radius: 0;
+  font-family: var(--atlas-field-font);
+}
+:root[data-edition=industrial] .app-shell .sidebar .workspace-dot {
+  border-radius: 0;
+  background: var(--atlas-rule-strong);
+}
+
+/* One shot of movement on the drawing, independent from reading and input. */
+:root[data-edition=industrial] .atlas-contour-motion {
+  position: absolute;
+  inset: 0 0 0 39%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 42%);
+}
+:root[data-edition=industrial] .atlas-contour-motion::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: url("./endfield-contour.svg") right 47% / cover no-repeat;
+  opacity: .18;
+  transform: translate(calc(var(--mx,0) * 18px),calc(var(--my,0) * 12px));
+  transition: transform 160ms var(--industrial-snap);
+}
+:root[data-edition=industrial] .app-shell:is([data-page=map],[data-page=trends]) .atlas-contour-motion::before {
+  background-image: url("./endfield-contour-secondary.svg");
+  background-position: right 37%;
+}
+:root[data-edition=industrial] .atlas-print-register {
+  position: absolute;
+  top: -2px;
+  left: 16px;
+  width: 72px;
+  pointer-events: none;
+}
+:root[data-edition=industrial][data-motion=full] .atlas-contour-motion {
+  animation: ef-wipe-in 280ms var(--industrial-mech) both;
+}
+
+:root[data-edition=industrial] .app-shell :is(.filter-bar,.list-toolbar,.segments,.segments button,.domain-card,.appearance-settings details,.matrix-range,.map-section-nav,.notes-explorer,.note-toolbar,.note-source),
+:root[data-edition=industrial] .overlay :is(.modal,.modal-head,.tabs,.notice,.linked-source-note,.linked-source-quote) {
+  border-radius: 2px;
+  border-color: var(--atlas-line);
+  box-shadow: none;
+}
+:root[data-edition=industrial] .app-shell :is(.filter-bar,.list-toolbar,.domain-card,.note-toolbar),
+:root[data-edition=industrial] .overlay :is(.modal,.modal-head,.linked-source-note) {
+  background: var(--atlas-paper);
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .overlay .modal.atlas-reader-modal {
+  box-shadow: 0 16px 42px #26262630;
+}
+:root[data-edition=industrial] .overlay {
+  background-color: #26262675;
+  backdrop-filter: blur(3px);
+}
+:root[data-edition=industrial] .overlay .modal-head {
+  border-block-end: 1px solid var(--atlas-line);
+}
+:root[data-edition=industrial] .overlay .modal-head h2 {
+  color: var(--atlas-ink);
+  letter-spacing: .02em;
+}
+:root[data-edition=industrial] .app-shell :is(.segments,.matrix-range,.notes-explorer,.note-source,.paper-search-options),
+:root[data-edition=industrial] .overlay :is(.abstract-editorial,.linked-source-quote) {
+  background: var(--atlas-soft);
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .app-shell .segments button.selected {
+  background: var(--atlas-paper);
+  color: var(--atlas-ink);
+  box-shadow: inset 0 -2px var(--atlas-action);
+  font-weight: 660;
+}
+:root[data-edition=industrial] .app-shell :is(.domain-multi-trigger,.domain-multi-menu) {
+  background: var(--atlas-paper);
+  border-color: var(--atlas-line);
+  border-radius: 2px;
+  color: var(--atlas-ink);
+  box-shadow: none;
+}
+:root[data-edition=industrial] .domain-multi-menu label:has(input:checked) {
+  background: var(--atlas-soft);
+  box-shadow: inset 2px 0 var(--atlas-action);
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(input,select,textarea) {
+  border-color: var(--atlas-line);
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) input:is([type=checkbox],[type=radio]) {
+  accent-color: var(--atlas-action);
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.button:not(.primary),.icon-button):hover:not(:disabled) {
+  background-color: var(--atlas-soft);
+  border-color: var(--atlas-rule-strong);
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.tag,.topic-chips button) {
+  border-radius: 0;
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.tag:not(.red,.amber,.orange,.green,.blue,.purple),.topic-chips button) {
+  background: var(--atlas-soft);
+  border-color: var(--atlas-line);
+  color: var(--atlas-action);
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.text-button,.atlas-reader-tools button) {
+  color: var(--atlas-action);
+}
+:root[data-edition=industrial] .app-shell :is(.paper-brief-toggle,.paper-title,.project-summary-trigger,.notes-file):hover {
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .app-shell :is(.paper-row:hover,.paper-row-expanded,.notes-file.active) {
+  background: var(--atlas-soft);
+}
+:root[data-edition=industrial] .app-shell :is(.tree-domain,.tree-topic,.tree-paper,.signal-source-card) {
+  border-color: var(--atlas-line);
+  border-radius: 2px;
+}
+:root[data-edition=industrial] .app-shell :is(.tree-domain[open] > summary,.tree-topic[open] > summary,.tree-paper.selected) {
+  background: var(--atlas-soft);
+  box-shadow: inset 2px 0 var(--atlas-action);
+}
+:root[data-edition=industrial] .app-shell :is(.paper-inline-brief,.project-inline-brief) {
+  border-inline-start: 2px solid var(--atlas-action);
+}
+:root[data-edition=industrial] .overlay .linked-source-quote {
+  border-inline-start: 2px solid var(--atlas-action);
+}
+:root[data-edition=industrial] .linked-source-coordinate .ef-marker { color: var(--atlas-ink); }
+:root[data-edition=industrial][data-motion=full] .linked-source-coordinate .ef-marker {
+  animation: ef-wipe-in 180ms var(--industrial-mech) both;
+}
+:root[data-edition=industrial] .app-shell .graph-view-heading {
+  background: var(--atlas-soft) url("./endfield-contour-secondary.svg") right -25px center / auto 280px no-repeat;
+  background-blend-mode: soft-light;
+}
+:root[data-edition=industrial] .app-shell .relation-panel.graph-light {
+  --network-bg: var(--atlas-paper);
+  --network-text: var(--atlas-ink);
+  --network-subtle: var(--atlas-muted);
+  --network-border: var(--atlas-line);
+}
+:root[data-edition=industrial] .app-shell .graph-light :is(.network-tools,.network-inspector,.paper-legend) {
+  border-radius: 2px;
+  background: var(--atlas-paper);
+  border-color: var(--atlas-line);
+}
+:root[data-edition=industrial] .app-shell .toast {
+  background: var(--atlas-dark);
+  color: var(--atlas-paper);
+  border-inline-start: 3px solid var(--industrial-signal);
+  border-radius: 0;
+  box-shadow: none;
+}
+:root[data-edition=industrial] .atlas-loading {
+  margin-block: 12px;
+  padding: 16px;
+  background: var(--atlas-paper);
+  border: 1px solid var(--atlas-line);
+  border-inline-start: 3px solid var(--atlas-action);
+  font-size: 13px;
+}
+:root[data-edition=industrial] .atlas-loading > div { max-width: 460px; margin-top: 12px; }
+:root[data-edition=industrial] .atlas-loading i:nth-child(2) { width: 72%; }
+:root[data-edition=industrial] .atlas-loading i:nth-child(3) { width: 44%; }
+
+.atlas-coverage-dial {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(220px,300px);
+  align-items: center;
+  gap: 12px 28px;
+  margin: 16px 0;
+  padding: 16px clamp(14px,3vw,28px);
+  border: 1px solid var(--atlas-line);
+  background: var(--atlas-paper);
+}
+.atlas-coverage-dial h4 { margin: 0; font-weight: 720; }
+.atlas-coverage-dial p { margin-top: 6px; color: var(--atlas-muted); }
+.atlas-coverage-dial ul { display: grid; gap: 0; padding: 0; margin: 12px 0 0; list-style: none; }
+.atlas-coverage-dial li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-block: 5px;
+  border-block-start: 1px solid var(--atlas-line);
+  font-size: 12px;
+}
+.atlas-coverage-dial .ef-dial { justify-self: center; max-width: 300px; }
+.atlas-coverage-dial .ef-dial .zh { font-size: 25px; }
+.atlas-coverage-dial .ef-dial .en { font-size: 13px; }
+.atlas-coverage-dial .ef-dial .core-label { font-size: 12px; }
+.atlas-coverage-dial .ef-dial .seg:not([href]) .plate { fill: var(--atlas-soft); stroke: var(--atlas-rule-strong); }
+.atlas-coverage-dial .ef-dial .seg:focus-visible { outline: none; }
+:root[data-edition=industrial] .project-coverage tr:focus {
+  background: var(--atlas-soft);
+  outline: 2px solid var(--atlas-action);
+  outline-offset: -2px;
+}
+
+/* The original Endfield edge sweep is reserved for intentional primary actions. */
+@media (hover: hover) {
+  :root[data-edition=industrial][data-motion=full] :is(.app-shell,.overlay) .button.primary {
+    position: relative;
+    overflow: hidden;
+  }
+  :root[data-edition=industrial][data-motion=full] :is(.app-shell,.overlay) .button.primary:hover:not(:disabled)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(var(--atlas-action),var(--atlas-action)) left / 2px 100% no-repeat;
+    pointer-events: none;
+    opacity: 0;
+    animation: ef-edge 300ms var(--industrial-mech);
+  }
+}
+
+@media (max-width: 650px) {
+  :root[data-edition=industrial] .atlas-contour-motion { inset-inline-start: 24%; }
+  :root[data-edition=industrial] .atlas-contour-motion::before { opacity: .12; }
+  .atlas-coverage-dial { grid-template-columns: minmax(0,1fr); }
+}

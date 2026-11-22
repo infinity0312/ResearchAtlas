@@ -1,0 +1,228 @@
+/* Component excerpts from hhikr/endfield-ui-skill, revision 96702a3. */
+
+.ef-tri {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 3px;
+}
+.ef-tri > i:nth-child(1) {
+  background: var(--ef-tri-a);
+}
+.ef-tri > i:nth-child(2) {
+  background: var(--ef-tri-b);
+}
+.ef-tri > i:nth-child(3) {
+  background: var(--ef-tri-c);
+}
+
+.ef-field {
+  font-family: var(--ef-font-ui);
+  font-size: var(--ef-t-field);
+  font-stretch: var(--ef-wide);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--ef-ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.ef-marker {
+  padding: 0.1em 0.45em;
+  background: linear-gradient(var(--ef-signal), var(--ef-signal)) left / 100% 100% no-repeat;
+  color: var(--ef-on-signal);
+  font-weight: 800;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* A state: live is solid ink, waiting is dashed, needs-a-look is a yellow block. */
+.ef-state {
+  display: inline-block;
+  padding: 0 0.5em;
+  border: 1px solid currentColor;
+  font-family: var(--ef-font-ui);
+  font-stretch: var(--ef-wide);
+  font-size: 0.7rem;
+  line-height: 1.6;
+  white-space: nowrap;
+  vertical-align: 0.15em;
+}
+.ef-state.is-draft {
+  color: var(--ef-ink-2);
+  border-style: dashed;
+}
+.ef-state.is-hidden {
+  border-style: dashed;
+}
+.ef-state.is-alert {
+  border-color: var(--ef-signal);
+  background: var(--ef-signal);
+  color: var(--ef-on-signal);
+  font-weight: 700;
+}
+
+.ef-dial {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--ef-font-ui);
+}
+.ef-dial .orbit {
+  fill: none;
+  stroke: var(--ef-ink-2);
+  stroke-dasharray: 2 10;
+}
+.ef-dial .plate {
+  fill: var(--ef-panel);
+  stroke: var(--ef-ink);
+  stroke-width: 1.5;
+  transition: fill 0.15s;
+}
+.ef-dial .zh {
+  font-size: 19px;
+  font-weight: 800;
+  fill: var(--ef-ink);
+}
+.ef-dial .en {
+  font-size: 8px;
+  font-stretch: var(--ef-wider);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--ef-ink-2);
+}
+.ef-dial .seg.is-here .plate {
+  fill: var(--ef-ink);
+}
+.ef-dial .seg.is-here :is(.zh, .en) {
+  fill: var(--ef-panel);
+}
+.ef-dial .seg.is-alert .plate {
+  stroke-width: 3;
+}
+.ef-dial .flag {
+  fill: var(--ef-signal);
+  stroke: var(--ef-on-signal);
+}
+.ef-dial .lock,
+.ef-dial .beam {
+  fill: none;
+  stroke: var(--ef-trace);
+  stroke-width: 3;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.3s var(--ef-mech);
+}
+.ef-dial .beam {
+  stroke-width: 1.5;
+}
+.ef-dial .seg:is(:hover, :focus-visible) .plate {
+  fill: var(--ef-signal);
+}
+.ef-dial .seg:is(:hover, :focus-visible) :is(.zh, .en) {
+  fill: var(--ef-on-signal);
+}
+.ef-dial .seg:is(:hover, :focus-visible) :is(.lock, .beam) {
+  stroke-dashoffset: 0;
+}
+.ef-dial .seg:focus-visible {
+  outline: none;
+}
+.ef-dial .core-tag {
+  fill: var(--ef-signal);
+}
+.ef-dial .core-label {
+  font-size: 10px;
+  fill: var(--ef-ink-2);
+}
+.ef-dial .core-label.on-tag {
+  font-weight: 700;
+  fill: var(--ef-on-signal);
+}
+.ef-dial .core {
+  font-size: 46px;
+  font-stretch: var(--ef-wide);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  fill: var(--ef-ink);
+}
+.ef-dial .core .unit {
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.ef-dial .gauge circle {
+  fill: none;
+  stroke-width: 11;
+}
+.ef-dial .gauge .track {
+  stroke: var(--ef-chip);
+}
+.ef-dial .gauge .arc {
+  stroke: var(--ef-ink-2);
+}
+.ef-dial .gauge text {
+  font-size: 10px;
+  fill: var(--ef-ink-2);
+}
+/* a reading that is nearly full: the arc goes to the colour of "here", with a yellow label */
+.ef-dial .gauge.is-alert .arc {
+  stroke: var(--ef-trace);
+}
+.ef-dial .gauge.is-alert text {
+  font-weight: 700;
+  fill: var(--ef-on-signal);
+}
+.ef-dial .gauge .flag {
+  fill: var(--ef-signal);
+  stroke: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ef-dial .orbit {
+    transform-box: view-box;
+    transform-origin: 300px 300px;
+  }
+  .ef-dial .seg {
+    animation: ef-assemble 360ms var(--ef-snap) backwards;
+    animation-delay: calc(var(--i) * 45ms + 80ms);
+    transform-box: view-box;
+    transform-origin: 300px 300px;
+  }
+}
+@keyframes ef-assemble {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+.ef-skeleton {
+  display: block;
+  height: 1em;
+  background: var(--ef-chip);
+}
+.ef-skeleton.line {
+  height: 0.8rem;
+  margin: 0.45rem 0;
+}
+
+@keyframes ef-wipe-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes ef-edge {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

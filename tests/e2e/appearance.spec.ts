@@ -1,0 +1,37 @@
+import {test,expect} from '@playwright/test';
+const key='atlas.appearance.v1';
+const prism={edition:'prism',motion:'system',effects:'auto',density:'comfortable'};
+const graph={papers:[{id:'a',title:'Alpha research',label:'Alpha'},{id:'b',title:'Beta research',label:'Beta'}],tags:[],links:[],relations:[{id:'ab',source_id:'a',target_id:'b',kind:'cites',evidence:{page:1,quote:'Beta research'}}],total:2,truncated:false};
+test('edition settings preserve classic, persist, synchronize tabs and never touch model settings',async({page,context})=>{
+ const mutations:string[]=[];page.on('request',r=>{if(r.url().includes('/api/')&&['PUT','POST','PATCH','DELETE'].includes(r.method()))mutations.push(r.url())});
+ await page.goto('/#page=settings');await expect(page.locator('html')).toHaveAttribute('data-edition','classic');await page.getByRole('button',{name:'Prism 光场工作台',exact:false}).click();await expect(page.locator('html')).toHaveAttribute('data-edition','prism');await page.getByLabel('动效偏好',{exact:true}).selectOption('reduced');await page.getByText('实验性视觉效果',{exact:true}).click();await page.getByLabel('图谱特效',{exact:true}).selectOption('off');await page.getByLabel('界面密度',{exact:true}).selectOption('compact');
+ await page.reload();await expect(page.locator('html')).toHaveAttribute('data-motion','reduced');await expect(page.getByLabel('图谱特效',{exact:true})).toBeHidden();await expect(page.getByLabel('动效偏好',{exact:true})).toBeVisible();await expect(page.getByLabel('界面密度',{exact:true})).toBeVisible();await page.getByText('实验性视觉效果',{exact:true}).click();await expect(page.getByLabel('图谱特效',{exact:true})).toHaveValue('off');
+ const second=await context.newPage();await second.goto('/#page=overview');await expect(second.locator('html')).toHaveAttribute('data-edition','prism');await page.getByRole('button',{name:'经典工作台',exact:false}).click();await expect(second.locator('html')).toHaveAttribute('data-edition','classic');expect(mutations).toEqual([]);await second.close();
+});
+for(const width of [390,1024,1440])test(`Prism all pages and graph modes fit at ${width}`,async({page})=>{
+ await page.addInitScript(()=>sessionStorage.setItem('atlas.terminal.entered','1'));const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(({key,prism})=>localStorage.setItem(key,JSON.stringify(prism)),{key,prism});await page.setViewportSize({width,height:900});
+ const datedPapers=graph.papers.map((paper,index)=>({...paper,published:`202${index+1}-03-01`,date_basis:'published'}));
+ await page.route('**/api/graph?*',r=>r.fulfill({json:{...graph,papers:datedPapers}}));
+ for(const route of ['overview','papers','map','trends','surveys','saved','notes','jobs','settings']){
+  await page.goto('/#page='+route);await expect(page.locator('html')).toHaveAttribute('data-edition','prism');await expect(page.locator('.page-heading .eyebrow')).toHaveText('RESEARCH ATLAS / '+route.toUpperCase());await expect(page.locator('.page-error')).toHaveCount(0);
+  if(route==='map'){await page.locator('.spatial-network').scrollIntoViewIfNeeded();await expect(page.locator('.spatial-network')).toHaveAttribute('data-ready','true');await expect(page.locator('.spatial-stage')).toHaveAttribute('data-renderer','three-webgl');for(const mode of ['similarity','timeline']){await page.getByLabel('图谱视图',{exact:true}).selectOption(mode);await expect(page.locator('.paper-view-chart')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)}}
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+ }
+ expect(errors).toEqual([]);
+});
+test('spatial renderer uses real geometry, selects evidence, handles context loss and disables cleanly',async({page})=>{
+ await page.addInitScript(()=>sessionStorage.setItem('atlas.terminal.entered','1'));
+ await page.addInitScript(({key,prism})=>localStorage.setItem(key,JSON.stringify(prism)),{key,prism});await page.route('**/api/graph?*',r=>r.fulfill({json:graph}));await page.goto('/#page=map');const stage=page.locator('.spatial-stage');await stage.scrollIntoViewIfNeeded();await expect(stage).toHaveAttribute('data-renderer','three-webgl');expect(Number(await stage.getAttribute('data-triangles'))).toBeGreaterThan(100);await expect(page.locator('.spatial-network')).toHaveAttribute('data-ready','true');await stage.focus();await page.keyboard.press('ArrowLeft');await expect(page.locator('.spatial-evidence')).toContainText('Beta');await expect.poll(()=>stage.getAttribute('data-pulses')).toBe('1');await expect.poll(()=>stage.getAttribute('data-pulses')).toBe('0');
+ await stage.locator('canvas').evaluate(el=>(el as HTMLCanvasElement).getContext('webgl2')?.getExtension('WEBGL_lose_context')?.loseContext());await expect(page.locator('.spatial-fallback')).toBeVisible();await expect(page.locator('.atlas-network')).toHaveAttribute('data-ready','true');await page.locator('[data-node-id]').first().focus();await page.keyboard.press('Enter');await expect(page.getByRole('dialog',{name:'论文阅读'})).toBeVisible();await page.keyboard.press('Escape');
+ await page.goto('/#page=settings');await page.getByText('实验性视觉效果',{exact:true}).click();await page.getByLabel('图谱特效',{exact:true}).selectOption('off');await page.getByRole('button',{name:'领域地图',exact:true}).click();await expect(page.locator('.atlas-network')).toHaveAttribute('data-ready','true');await expect(stage).toHaveCount(0);
+});
+test('malformed preferences fall back and unavailable GPU preserves nodes',async({page})=>{
+ await page.addInitScript(key=>localStorage.setItem(key,'broken-json'),key);await page.route('**/api/graph?*',r=>r.fulfill({json:graph}));await page.goto('/#page=settings');await expect(page.locator('html')).toHaveAttribute('data-edition','classic');await page.getByRole('button',{name:'Prism 光场工作台',exact:false}).click();
+ await page.evaluate(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:any[]){if(type==='webgl'||type==='webgl2')return null;return (original as any).call(this,type,...args)} as typeof original});
+ await page.getByRole('button',{name:'领域地图',exact:true}).click();await expect(page.locator('.spatial-fallback')).toBeVisible();await expect(page.locator('[data-node-id]')).toHaveCount(2);
+});
+test('switching edition in another tab preserves a live note editor',async({page,context})=>{
+ await page.goto('/#page=notes');await page.getByRole('button',{name:'新建笔记',exact:true}).click();await page.getByLabel('笔记标题',{exact:true}).fill('Prism continuity check');await page.locator('.cm-content').fill('# Continuity\n\nKeep this text when switching edition.');
+ const settings=await context.newPage();await settings.goto('/#page=settings');await settings.getByRole('button',{name:'Prism 光场工作台',exact:false}).click();await expect(page.locator('html')).toHaveAttribute('data-edition','prism');await expect(page.locator('.cm-content')).toContainText('Keep this text');await expect(page.getByLabel('笔记标题',{exact:true})).toHaveValue('Prism continuity check');await expect(page.locator('.note-toolbar [role=status]')).toHaveText('已保存',{timeout:10000});
+ await page.getByRole('button',{name:'阅读',exact:true}).click();await expect(page.locator('.note-preview')).toContainText('Keep this text');await settings.getByRole('button',{name:'经典工作台',exact:false}).click();await expect(page.locator('.note-preview')).toContainText('Keep this text');await settings.close();
+});

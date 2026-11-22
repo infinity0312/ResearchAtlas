@@ -1,0 +1,19 @@
+.paper-search-options{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:0 24px 14px;color:var(--atlas-muted,#61736a);font-size:12px}
+.paper-search-options label{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.paper-search-options select{max-width:100%}
+.paper-search-rank{margin:6px 0 0;font-size:11px;line-height:1.6;color:var(--atlas-muted,#61736a)}
+.paper-research-trace{padding:12px 0;margin:0 0 16px;border-bottom:1px solid var(--atlas-line,#e3ebe6);font-size:12px;line-height:1.8}
+.paper-research-trace summary{color:var(--atlas-action,#28785f);cursor:pointer;min-height:24px}
+.paper-research-trace-body{margin-top:10px}
+.paper-research-trace dl{margin:0;overflow-wrap:anywhere}
+.paper-research-trace dl>div{display:grid;grid-template-columns:82px minmax(0,1fr);gap:12px;padding:7px 0}
+.paper-research-trace dt{font-weight:550}
+.paper-research-trace dd{margin:0}
+.paper-research-trace small{display:block;color:var(--atlas-muted,#61736a);font-size:11px}
+.project-evidence-comparison{padding:12px 0;font-size:12px;line-height:1.8}
+.project-evidence-comparison summary{color:var(--ap-action,#28785f);cursor:pointer}
+.project-evidence-comparison-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:8px}
+.project-evidence-comparison-columns label,.project-evidence-comparison-columns select{min-width:0;max-width:100%;width:100%}
+.project-evidence-comparison-columns article{padding:12px;background:var(--ap-ground,#f7faf8);border:1px solid var(--ap-line,#e3ebe6);overflow-wrap:anywhere}
+@media(max-width:650px){.paper-search-options{padding-inline:14px}.paper-research-trace summary{min-height:44px}.paper-research-trace dl>div{grid-template-columns:65px minmax(0,1fr);gap:9px}}
+@media(max-width:650px){.project-evidence-comparison-columns{grid-template-columns:minmax(0,1fr)}}

@@ -1,0 +1,93 @@
+/* One desktop grid for browsing, maps and evidence. Text keeps a reading measure. */
+:root .app-shell.atlas-workspace{--workspace-rail:clamp(190px,14vw,224px);--workspace-gap:clamp(18px,1.8vw,32px)}
+:root .app-shell.atlas-workspace main{max-width:1800px;padding-inline:var(--workspace-gap);padding-top:26px}
+:root .app-shell.atlas-workspace .page-heading{margin-bottom:20px;padding-bottom:0}
+:root .app-shell.atlas-workspace .page-heading h1{font-size:29px}
+:root .app-shell.atlas-workspace .page-heading p{margin-top:8px}
+:root .app-shell.atlas-workspace .filter-bar{gap:16px;min-height:54px;padding:9px 14px;margin-bottom:20px;background:#fff;border:1px solid var(--atlas-line);border-radius:8px}
+:root .app-shell.atlas-workspace .filter-group select{font-size:13px}
+:root .app-shell.atlas-workspace .segments{border:0;background:var(--atlas-ground);padding:3px;border-radius:6px}
+:root .app-shell.atlas-workspace .segments button{font-size:12px;color:var(--atlas-muted);padding:7px 12px;border-radius:5px}
+:root .app-shell.atlas-workspace .segments button.selected{background:#fff;color:var(--atlas-action);box-shadow:0 1px 4px #254c3810}
+:root .app-shell.atlas-workspace .scope-note{font-size:11px;color:var(--atlas-muted)}
+:root .app-shell.atlas-workspace .panel{background:#fff;border-color:var(--atlas-line);border-radius:9px;box-shadow:none}
+:root .app-shell.atlas-workspace .panel-title{padding:20px 24px 16px}
+:root .app-shell.atlas-workspace .panel-title h2{font-size:19px;line-height:1.5;color:var(--atlas-ink);font-weight:550}
+:root .app-shell.atlas-workspace .panel-title p{font-size:12px;line-height:1.8;color:var(--atlas-muted)}
+:root .app-shell.atlas-workspace .panel-title .eyebrow{margin-bottom:6px}
+:root .app-shell.atlas-workspace .paper-panel{max-width:1400px;overflow:visible}
+:root .app-shell.atlas-workspace .list-toolbar{padding:15px 24px;gap:16px;border-color:var(--atlas-line);background:#fff;border-radius:9px 9px 0 0}
+:root .app-shell.atlas-workspace .list-toolbar>span{font-size:12px;color:var(--atlas-muted)}
+:root .app-shell.atlas-workspace .search-input{flex:1;max-width:680px;min-width:min(100%,220px)}
+:root .app-shell.atlas-workspace .search-input input{width:100%;font-size:14px;padding-block:8px}
+:root .app-shell.atlas-workspace .paper-row{padding:21px 24px;gap:15px;border-color:var(--atlas-line);align-items:flex-start;transition:background 140ms}
+:root .app-shell.atlas-workspace .paper-row:hover{background:#fbfdfb}
+:root .app-shell.atlas-workspace .paper-row-expanded{background:#fbfdfb}
+:root .app-shell.atlas-workspace .paper-body{min-width:0;flex:1}
+:root .app-shell.atlas-workspace .paper-mark{width:28px;min-width:28px;height:32px;padding:0;border:0;background:transparent;color:#8fb29d}
+:root .app-shell.atlas-workspace .paper-title{display:block;text-align:left;max-width:1100px;font-size:17px;font-weight:550;line-height:1.65;color:var(--atlas-ink);overflow-wrap:anywhere;margin:6px 0 8px}
+:root .app-shell.atlas-workspace .paper-title:hover{color:var(--atlas-action)}
+:root .app-shell.atlas-workspace .paper-meta{font-size:11px;line-height:1.8;gap:8px;color:var(--atlas-muted)}
+:root .app-shell.atlas-workspace .abstract{font-size:14px;line-height:1.85;color:#61766a;max-width:1040px;margin-bottom:12px}
+:root .app-shell.atlas-workspace .paper-bottom{font-size:11px;line-height:1.8;gap:12px;color:var(--atlas-muted);justify-content:flex-start;flex-wrap:wrap}
+:root .app-shell.atlas-workspace .bookmark,:root .app-shell.atlas-workspace .open-paper{margin-top:8px;flex:none}
+:root .app-shell.atlas-workspace .paper-brief-toggle{display:flex;align-items:center;gap:8px;padding:7px 0;margin-top:8px;font-size:12px;color:var(--atlas-action);min-height:32px}
+:root .app-shell.atlas-workspace .paper-brief-toggle svg{transition:transform 140ms}
+:root .app-shell.atlas-workspace .paper-brief-toggle[aria-expanded=true] svg{transform:rotate(180deg)}
+:root .app-shell.atlas-workspace .paper-inline-brief{margin:10px 0 0;padding:20px 22px;background:#fff;border:1px solid var(--atlas-line);border-radius:8px;box-shadow:0 8px 24px #294d3908;max-width:1080px;overflow-wrap:anywhere}
+:root .app-shell.atlas-workspace .paper-brief-section+.paper-brief-section{border-top:1px solid var(--atlas-line);margin-top:20px;padding-top:18px}
+:root .app-shell.atlas-workspace .paper-brief-label{display:block;color:var(--atlas-muted);font-size:11px;margin-bottom:10px}
+:root .app-shell.atlas-workspace .paper-brief-section p{font-size:14px;line-height:1.9;max-width:920px;color:var(--atlas-ink);white-space:pre-wrap}
+:root .app-shell.atlas-workspace .paper-brief-methods{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+:root .app-shell.atlas-workspace .paper-brief-methods span{padding:4px 8px;background:var(--atlas-ground);color:var(--atlas-muted);font-size:11px;border-radius:5px}
+:root .app-shell.atlas-workspace .paper-brief-footer{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:20px}
+:root .app-shell.atlas-workspace .paper-brief-footer>span{font-size:11px;color:var(--atlas-muted)}
+:root .app-shell.atlas-workspace .feed-end{font-size:12px;padding:20px;color:var(--atlas-muted)}
+:root .app-shell.atlas-workspace .domain-cards{gap:16px;margin-block:20px}
+:root .app-shell.atlas-workspace .domain-card{padding:22px;background:#fff;border:1px solid var(--atlas-line);border-radius:8px;box-shadow:none}
+:root .app-shell.atlas-workspace .domain-card h2{font-size:18px;color:var(--atlas-ink)}
+:root .app-shell.atlas-workspace .domain-card p{font-size:13px;line-height:1.8;color:var(--atlas-muted)}
+:root .app-shell.atlas-workspace .domain-symbol{width:36px;height:36px;border-radius:8px}
+:root .app-shell.atlas-workspace .notice{border-radius:7px;font-size:12px;line-height:1.85}
+:root .app-shell.atlas-workspace .page-footer{padding-block:26px;font-size:11px;color:var(--atlas-muted)}
+:root[data-density=compact] .app-shell.atlas-workspace .paper-row{padding-block:15px}
+:root[data-density=compact] .app-shell.atlas-workspace .paper-title{font-size:16px}
+:root[data-density=compact] .app-shell.atlas-workspace .page-heading{margin-bottom:15px}
+@media(max-width:900px){:root .app-shell.atlas-workspace{--workspace-gap:20px}:root .app-shell.atlas-workspace .page-heading h1{font-size:28px}}
+@media(max-width:600px){
+ :root .app-shell.atlas-workspace{--workspace-gap:14px}
+ :root .app-shell.atlas-workspace main{padding-top:22px}
+ :root .app-shell.atlas-workspace .page-heading h1{font-size:27px}
+ :root .app-shell.atlas-workspace .filter-bar{gap:10px;padding:10px 12px}
+ :root .app-shell.atlas-workspace .segments button{min-height:36px;padding:6px 9px}
+ :root .app-shell.atlas-workspace .panel-title,:root .app-shell.atlas-workspace .list-toolbar{padding:16px}
+ :root .app-shell.atlas-workspace .paper-row{padding:18px 15px;gap:8px}
+ :root .app-shell.atlas-workspace .paper-title{font-size:16px;line-height:1.7}
+ :root .app-shell.atlas-workspace .paper-mark{display:none}
+ :root .app-shell.atlas-workspace .paper-brief-toggle{min-height:44px}
+ :root .app-shell.atlas-workspace .paper-inline-brief{padding:15px;margin-left:0;margin-right:-26px}
+ :root .app-shell.atlas-workspace .paper-brief-footer{gap:12px}
+ :root .app-shell.atlas-workspace .paper-brief-footer>span{flex-basis:100%}
+ :root .app-shell.atlas-workspace .bookmark{min-width:32px;min-height:40px;margin-top:0}
+ :root .app-shell.atlas-workspace .domain-card{padding:20px}
+}
+
+:root .atlas-workspace .map-section-nav{position:sticky;top:0;z-index:12;display:flex;align-items:center;gap:20px;background:#fffffff5;backdrop-filter:blur(10px);border-bottom:1px solid var(--atlas-line);padding:4px 12px;margin-bottom:18px;border-radius:7px 7px 0 0}.atlas-workspace .map-section-nav button{min-height:42px;font-size:13px;color:var(--atlas-muted);border-bottom:2px solid transparent;padding:7px 3px}.atlas-workspace .map-section-nav button[aria-current=location]{color:var(--atlas-action);border-color:var(--atlas-action);font-weight:550}.atlas-workspace .map-section-nav>span{margin-left:auto;color:var(--atlas-muted);font-size:11px}.atlas-workspace :is(#map-taxonomy,#map-relations,#map-methods){scroll-margin-top:62px;min-width:0}@media(max-width:600px){:root .atlas-workspace .map-section-nav{gap:22px;padding-inline:10px}.atlas-workspace .map-section-nav>span{display:none}}
+
+/* Reserve the chapter strip above a plot; a matrix cell should read as a cell. */
+:root .atlas-workspace .paper-view[data-view=similarity]:not(.spatial-paper-view) .paper-view-chart{height:auto;aspect-ratio:1;min-height:300px;max-height:calc(100dvh - 140px)}
+:root .atlas-workspace .paper-view.spatial-paper-view[data-view=similarity] .paper-view-chart{height:calc(100dvh - 150px);min-height:360px;max-height:800px}
+:root .atlas-workspace .paper-view[data-view=similarity] .pv-workspace>.pv-index,:root .atlas-workspace .paper-view .pv-spatial-workspace>.pv-index{height:auto;max-height:calc(100dvh - 140px);align-self:stretch}
+:root .atlas-workspace .paper-view .pv-index-list{overscroll-behavior:contain}
+@media(max-width:800px){:root .atlas-workspace .paper-view[data-view=similarity] .pv-workspace>.pv-index,:root .atlas-workspace .paper-view .pv-spatial-workspace>.pv-index{height:240px;max-height:240px}:root .atlas-workspace .paper-view.spatial-paper-view[data-view=similarity] .paper-view-chart{height:480px;max-height:calc(100dvh - 120px);min-height:320px}}
+
+:root .atlas-workspace .graph-refresh-state{display:block;font-size:11px;color:var(--atlas-muted);margin-top:5px;font-weight:400}
+
+/* Keep navigation controls and the active plot in the same visible workspace. */
+:root .atlas-workspace .paper-view:not(.spatial-paper-view) .pv-matrix-navigation{position:sticky;top:50px;z-index:8;background:#fffffff7;border-bottom:1px solid var(--atlas-line)}
+:root .atlas-workspace .spatial-paper-view .relief-toolbar{position:sticky;top:50px;z-index:8;background:#f7faf8;min-height:56px;padding:8px 16px}
+:root .atlas-workspace .spatial-paper-view .relief-scale{position:sticky;top:106px;z-index:7;background:#fff;min-height:24px}
+:root .atlas-workspace .paper-view .paper-view-chart{scroll-margin-top:150px}
+@media(max-width:800px){:root .atlas-workspace .paper-view .paper-view-chart{scroll-margin-top:200px}}
+
+:root .atlas-workspace .relation-panel:not(.graph-expanded),:root .atlas-workspace .relation-panel:not(.graph-expanded) .graph-stage{overflow:clip}

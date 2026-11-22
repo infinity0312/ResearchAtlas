@@ -1,0 +1,97 @@
+/* One control surface for every page, including lazy-loaded pages and dialogs. */
+:root .app-shell select:not([multiple]) {
+  font: 400 13px/1.5 Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+  color: #29483d;
+  background: #fff;
+  border: 1px solid #dce5df;
+  border-radius: 9px;
+  min-height: 40px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s;
+}
+:root .app-shell select:hover:not(:disabled) { border-color: #a9c0b4; }
+:root .app-shell select:focus-visible,
+:root .app-shell select:open {
+  outline: none;
+  border-color: #729c88;
+  box-shadow: 0 0 0 3px #327c7217;
+}
+:root .app-shell select:disabled { opacity: .5; cursor: not-allowed; }
+
+@supports (appearance: base-select) {
+  :root .app-shell select:not([multiple]),
+  :root .app-shell select::picker(select) { appearance: base-select; }
+  :root .app-shell select:not([multiple]) {
+    background-image: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .app-shell select::picker-icon {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid #7b9386;
+    border-bottom: 1.5px solid #7b9386;
+    transform: translateY(-2px) rotate(45deg);
+    margin-left: auto;
+    margin-right: 2px;
+    flex-shrink: 0;
+    rotate: 0deg;
+    transition: none;
+  }
+  .app-shell select:open::picker-icon { transform: translateY(2px) rotate(225deg); }
+  :root .app-shell select::picker(select) {
+    font: 400 13px/1.5 Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+    color: #29483d;
+    background: #fff;
+    border: 1px solid #dce5df;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 7px 0;
+    box-shadow: 0 10px 32px #183c2820, 0 2px 6px #183c2808;
+    max-height: min(320px, 50dvh);
+    max-width: min(480px, calc(100vw - 24px));
+    overflow: auto;
+    inset: auto;
+    position-area: block-end span-inline-end;
+    position-try-order: normal;
+    position-try-fallbacks: flip-block, flip-inline;
+    scrollbar-width: thin;
+    scrollbar-color: #ccd8cf transparent;
+  }
+  :root .app-shell select option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    min-height: 38px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #29483d;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+  }
+  :root .app-shell select option:checked { background: #edf4ee; color: #245d4f; font-weight: 600; }
+  :root .app-shell select option:hover,
+  :root .app-shell select option:focus { background: #e6eee8; outline: none; }
+  .app-shell select option::checkmark { order: 1; margin-left: auto; color: #327c72; }
+  :root .app-shell select option:disabled { opacity: .45; cursor: not-allowed; }
+}
+
+/* Older browsers keep native interaction; the fallback arrow can never tile. */
+@supports not (appearance: base-select) {
+  :root .app-shell select:not([multiple]) {
+    appearance: none;
+    padding-right: 34px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237b9386' stroke-width='1.7'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 12px center / 16px 16px no-repeat;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-shell select, .app-shell select::picker-icon { transition: none; }
+}

@@ -1,0 +1,68 @@
+/* Prism materials. Classic geometry and content are unchanged. */
+:root[data-edition=prism]{--ink:#313f34;--muted:#6d8271;--line:#e0e6e1;--green:#65896c;--accent:#edf4ee;--prism-surface:#fff;--prism-shadow:0 2px 4px #30413303,0 12px 40px #30413305;--ease-out:cubic-bezier(.22,1,.36,1);background:#f3f5f3}
+[data-edition=prism] body{background:radial-gradient(ellipse at 92% 0%,#e6efe7aa,transparent 45%),#f3f5f3}
+[data-edition=prism] .sidebar{background:linear-gradient(150deg,#313f34,#304033 70%);border:1px solid #ffffff10;border-radius:0;inset:0 auto 0 0;box-shadow:3px 0 18px #2e42320a}
+[data-edition=prism] .brand{color:#f2f7f3}[data-edition=prism] .brand small,[data-edition=prism] .nav-label,[data-edition=prism] .local-status{color:#a6b6a9}
+[data-edition=prism] .workspace{background:linear-gradient(125deg,#ffffff0c,#ffffff04);color:#dce9de;border:1px solid #ffffff13;box-shadow:inset 0 1px #ffffff06;border-radius:10px}
+[data-edition=prism] .avatar,[data-edition=prism] .top-avatar{background:#e6efe7;color:#65826b;border-radius:9px}
+[data-edition=prism] .nav-item{color:#b6c7b9;border-radius:7px;transition:background 180ms,color 180ms,box-shadow 220ms}
+[data-edition=prism] .nav-item:hover{background:#ffffff09;color:#fff}
+[data-edition=prism] .nav-item.active{background:linear-gradient(105deg,#dae8dd,#ebf3ed);color:#364839;box-shadow:inset 0 1px #fff9,0 4px 12px #2c443120}
+[data-edition=prism] .nav-item.active:before{background:#90b597;height:38%;top:31%;width:2px}
+[data-edition=prism] .domain-nav button{color:#b6c7b9}[data-edition=prism] .domain-nav button:hover,[data-edition=prism] .domain-nav .selected{background:#ffffff0c;color:#edf4ee}
+[data-edition=prism] .topbar{background:#f9fcfacc;border-color:#e2e9e3;backdrop-filter:blur(16px);box-shadow:inset 0 -1px #fff9}
+[data-edition=prism] .breadcrumb strong{color:#617c66}
+[data-edition=prism] .page-heading{border-bottom:1px solid #dbe5dd;padding-bottom:22px}
+[data-edition=prism] .page-heading h1{color:#334136;letter-spacing:-.7px;font-weight:600}[data-edition=prism] .eyebrow{color:#7f9483;letter-spacing:2.5px}[data-edition=prism] .page-heading p{color:#6e8472}[data-edition=prism] .heading-dot{color:#8eb495}
+[data-edition=prism] :is(.panel,.metric,.relation-panel,.notes-workspace,.trend-signals){border:1px solid #e2e9e3;border-radius:12px;background:#ffffffed;box-shadow:var(--prism-shadow)}
+[data-edition=prism] .panel-title h2,[data-edition=prism] .paper-title{color:#39483c}
+[data-edition=prism] .panel-title p,[data-edition=prism] .paper-meta,[data-edition=prism] .paper-bottom{color:#748a78}
+[data-edition=prism] .paper-row .abstract{color:#637767}
+[data-edition=prism] .button{border-radius:7px;border-color:#d9e7dc;color:#608066;transition:transform 180ms var(--ease-out),background 180ms,box-shadow 180ms}
+[data-edition=prism] .button.primary{background:linear-gradient(130deg,#709377,#5a7a60);color:#fff;border-color:#69896f;box-shadow:inset 0 1px #ffffff35,0 3px 8px #53795a25}
+[data-edition=prism] .button.primary:hover{background:linear-gradient(130deg,#7ba282,#608066);box-shadow:inset 0 1px #ffffff35,0 5px 14px #53795a30}
+[data-edition=prism][data-motion=full] .button:active{transform:translateY(1px) scale(.985)}
+[data-edition=prism] .button:not(.primary):hover{background:#f0f6f1;border-color:#c0d7c4}
+[data-edition=prism] .filter-bar{border:1px solid #e0e8e2;border-radius:9px;background:#f9fcfae0;box-shadow:inset 0 1px white}
+[data-edition=prism] .segments{background:#ebf2ec;border-color:#e2ede4}[data-edition=prism] .segments .selected{color:#55755b;background:#fff}
+[data-edition=prism] :is(input,textarea,select){color:#4b604f;border-color:#d9e7dc}
+[data-edition=prism] .tag{color:#66826b;background:#eff5f0;border-color:#e1ede3}
+[data-edition=prism] .metric{border-top:1px solid #e2e9e3;background:linear-gradient(145deg,#fff 45%,#f6faf7);box-shadow:inset 0 1px #fff,var(--prism-shadow)}
+[data-edition=prism] .metric strong{color:#516755;font-weight:450}[data-edition=prism] .metric svg{color:#8cac92}[data-edition=prism] .metric:after{display:none}
+[data-edition=prism] .paper-row:hover{background:#f8fbf9}[data-edition=prism] .paper-mark{color:#83a68a;background:#eff5f0}
+[data-edition=prism] :is(button,a,input,select,textarea):focus-visible{outline:2px solid #82b18b;outline-offset:3px}
+[data-edition=prism] .notes-workspace .notes-explorer{background:#f3f8f4}[data-edition=prism] .notes-workspace .note-toolbar{background:#fbfdfc}[data-edition=prism] .notes-workspace .note-title{color:#4b6550}
+[data-edition=prism] .notes-workspace :is(.cm-activeLine,.cm-activeLineGutter,.note-folder-row.selected){background:#ecf4ee;color:#55755b}
+[data-edition=prism] .reader-tabs{background:#f3f7f4}[data-edition=prism] .abstract-editorial{background:linear-gradient(130deg,#f2f7f3,#fbfdfc)}
+[data-edition=prism] .job-row:hover{background:#f9fbf9}[data-edition=prism] .progress i{background:linear-gradient(90deg,#82a889,#a1b8a5)}
+[data-edition=prism] .relation-panel.graph-light{--network-bg:#f6faf7;--network-text:#495e4d;--network-subtle:#819986;--network-border:#ddeadf}
+[data-edition=prism] .atlas-network{background:radial-gradient(ellipse at 20% 0%,#e7f0e96b,transparent 60%),var(--network-bg)}
+[data-edition=prism] .spatial-network{background:#eaf0eb}[data-edition=prism] :is(.spatial-node-label,.spatial-evidence,.spatial-navigation>div){background:#fcfdfcec;border-color:#ffffffb0;color:#566e5b;box-shadow:0 8px 26px #31433412}
+[data-edition=prism] .spatial-evidence h3{color:#374b3b}[data-edition=prism] .spatial-read{background:#5c8063}
+.edition-option.prism .edition-preview{background:linear-gradient(125deg,#f1f6f2,#f9fcfa)}.edition-option.prism .preview-nav{background:#313f34;margin:0;border-radius:0}.edition-option.prism .preview-content b{background:#7d9f83}
+/* Keep the workspace surface opaque during navigation; lazy routes preload before commit. */
+.page-transition,[data-edition=prism][data-motion=full] .page-transition{animation:none;view-transition-name:none}
+.terminal-replay{padding:0 26px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}.terminal-replay span{font-size:12px;color:#637967}
+.terminal-entry{position:fixed;inset:0;z-index:10000;background:#eef4ef;color:#304634;display:flex;flex-direction:column;padding:clamp(24px,4vw,64px);overflow:hidden;isolation:isolate;transition:opacity .5s,clip-path .54s cubic-bezier(.7,0,.2,1);clip-path:inset(0)}
+.terminal-entry:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,transparent calc(50% - 1px),#718a7612 50%,transparent calc(50% + 1px)),repeating-linear-gradient(0deg,transparent 0 79px,#718a7607 79px 80px)}
+.terminal-entry.is-leaving{clip-path:inset(0 0 100% 0);opacity:.3;pointer-events:none}.terminal-entry header{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:11px;letter-spacing:2px;border-top:2px solid;padding-top:18px}.terminal-entry header button{background:transparent;border:1px solid #80988540;padding:10px 14px;color:inherit;border-radius:2px;cursor:pointer}.terminal-entry kbd{font-size:10px;margin-left:10px;opacity:.55}
+.entry-title{margin:auto 0;position:relative;z-index:1}.entry-title>span{font-size:12px;letter-spacing:5px}.entry-title h1{font-family:Arial,sans-serif;font-size:clamp(48px,8vw,120px);font-weight:400;letter-spacing:-.065em;line-height:.94;margin:24px 0}.entry-title strong{font-weight:750}.entry-title i{font-size:18px;font-style:normal;vertical-align:top;margin-left:14px}.entry-title p{font-size:12px;letter-spacing:8px;margin-top:25px}
+.entry-composition{position:absolute;right:1%;top:15%;width:55%;height:65%;display:grid;place-items:center;color:#749b7b}.entry-composition svg{width:100%;height:100%;overflow:visible}.entry-rule{stroke:currentColor;opacity:.17;stroke-width:.5}.entry-mark{stroke:currentColor;stroke-width:1;fill:none;stroke-dasharray:1100;stroke-dashoffset:1100;animation:entry-draw 1.6s .15s forwards cubic-bezier(.3,.6,.2,1)}.entry-mark path:first-child{stroke-width:9}.entry-reticle{position:absolute;width:55%;aspect-ratio:1;border:1px solid #73967a30;border-radius:50%;animation:entry-orbit 2.4s both}.entry-reticle:after{content:'';position:absolute;inset:12%;border:1px dashed #73967a40;border-radius:50%}.entry-coordinate{position:absolute;bottom:2%;font-size:9px;letter-spacing:4px}
+.terminal-entry footer{max-width:850px;width:100%;position:relative}.entry-progress{height:2px;background:#758f7a25}.entry-progress i{display:block;height:100%;background:#739579;transform-origin:left;transition:transform .4s}.entry-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:20px 0;border-bottom:1px solid #758f7a25}.entry-steps>div{display:flex;gap:10px;align-items:center;font-size:12px}.entry-steps small{opacity:.5;font-family:monospace}.entry-steps b{margin-left:auto;font-weight:400;opacity:.65;font-size:11px}.terminal-entry footer>p{display:flex;justify-content:space-between;font-size:10px;letter-spacing:1px;margin:15px 0 0}
+@keyframes entry-draw{to{stroke-dashoffset:0}}@keyframes entry-orbit{from{transform:rotate(-60deg) scale(1.5);opacity:0}to{transform:rotate(0) scale(1);opacity:1}}
+@media(max-width:650px){.entry-composition{right:-35%;top:10%;width:110%;opacity:.22}.entry-steps{gap:12px}.entry-steps>div{flex-wrap:wrap}.entry-steps b{width:100%;margin:0}.terminal-entry header{letter-spacing:1px}.terminal-entry kbd{display:none}}
+@media(prefers-reduced-motion:reduce){.terminal-entry,.entry-progress i{transition:none}.entry-mark{animation:none;stroke-dashoffset:0}.entry-reticle{animation:none}}
+[data-motion=reduced] .entry-mark{stroke-dashoffset:0}
+
+.proximity-light{position:fixed;pointer-events:none;z-index:40;border-radius:12px;opacity:0;contain:strict}
+[data-edition=prism] :is(.metric small,.metric>span,.chart-label,.muted){color:#6d8371}
+[data-edition=prism] :is(.pv-index,.paper-view-detail,.paper-view-caption){color:#596e5d;background:#f9fbf9;border-color:#dfebe1}
+[data-edition=prism] .paper-view{background:linear-gradient(145deg,#fff,#f7faf8)}
+[data-edition=prism] .paper-view-caption h3{color:#465f4b}
+
+[data-edition=prism] :is(.trend-controls,.trend-details,.trend-signals,.trend-explainer){color:#4e6152}
+[data-edition=prism] :is(.trend-hero p,.trend-explainer p,.trend-controls small,.trend-details code){color:#6e8472}
+[data-edition=prism] .trend-signals{background:#fbfdfc}
+[data-edition=prism] .paper-view-caption{background:transparent}
+[data-edition=prism] :is(.pv-index-list button.active,.paper-view-pair button){background:#eff5f0;color:#597e60;border-color:#dbe9de}
+

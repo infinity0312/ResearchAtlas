@@ -1,0 +1,234 @@
+/* Graphite and warm paper for chrome. Steel blue distinguishes validated states and analytical marks. */
+:root[data-edition=industrial] {
+  --atlas-steel: #496983;
+  --atlas-steel-wash: #eaf0f4;
+  --atlas-steel-rule: #bccbd6;
+  --atlas-mark-wash: #f7f4d8;
+  --method-density-rgb: 73 105 131;
+  --method-empty: var(--atlas-ground);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.muted,.paper-meta,.paper-bottom,.abstract,.paper-brief-label,.sidebar-bottom,.breadcrumb,.local-status,.scope-note,.job-date) {
+  color: var(--atlas-muted);
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.workspace small,.domain-nav small,.tiny-arrow,.page-footer,.filter-group,.search-input,.paper-meta > span:first-child,.version,.segments button:not(.selected),.metric > div,.metric > small,.panel-title .legend,.empty h3,.empty p,.job-main p,.form label,.form small,.settings-domain p,.survey-row p,.tree-explainer,.tree-navigation,.tree-domain-count,.domain-card footer,.trend-source,.trend-context,.appearance-controls label,.appearance-controls small,.edition-option p,.steps) {
+  color: var(--atlas-muted);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.breadcrumb strong,.setup-banner strong,.survey-intro strong,.tree-domain summary,summary.tree-domain) {
+  color: var(--atlas-ink);
+}
+
+:root[data-edition=industrial] .app-shell :is(.setup-banner,.survey-intro) {
+  background: linear-gradient(105deg,var(--atlas-soft),var(--atlas-paper));
+  border-color: var(--atlas-line);
+  color: var(--atlas-ink);
+}
+
+:root[data-edition=industrial] .app-shell :is(.setup-banner p,.survey-intro p,.survey-art,.upload-strip,.metric svg.lucide) {
+  color: var(--atlas-muted);
+  border-color: var(--atlas-line);
+}
+
+:root[data-edition=industrial] .app-shell :is(.panel-title p,.terminal-replay span,.steps > span) {
+  color: var(--atlas-muted);
+}
+
+:root[data-edition=industrial] .app-shell .setup-symbol {
+  color: var(--atlas-ink);
+  background: var(--atlas-mark-wash);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.page-footer i,.steps i,.paper-meta > i) {
+  background-color: var(--atlas-rule-strong);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.button:not(.primary,.danger),.icon-button,.text-button,.paper-mark,.domain-multi-trigger,.atlas-source-select,.linked-source-close,.pdf-toolbar button,.empty-icon,.filter-group > svg) {
+  color: var(--atlas-action);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.panel-title,.detail-actions,.setting-actions,.list-toolbar,.reader-tags,.metric,.setup-banner) > svg.lucide {
+  color: var(--atlas-action);
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.search-input input,.filter-group select,.detail-actions select,.notes-workspace input,.workspace-panel input,.trend-editor input,.trend-editor textarea,.form-control input,.form-control textarea,.list-toolbar input) {
+  color: var(--atlas-ink);
+  background-color: var(--atlas-paper);
+  border-color: var(--atlas-line);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(input,textarea)::placeholder {
+  color: var(--atlas-muted);
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(input,textarea,select):focus {
+  border-color: var(--atlas-rule-strong);
+  outline-color: var(--atlas-action);
+  box-shadow: none;
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.button:not(.primary,.danger):hover,.tag:not(.green,.red,.amber,.orange,.blue,.purple),.pdf-toolbar,.analysis-summary,.analysis-quality,.analysis-quality-expand,.lesson-expansion,.paper-project-actions,.note-preview,.notes-welcome,.note-source,.method-mappings,.graph-research-result,.trend-reading article,.trend-details table,.signal-method) {
+  border-color: var(--atlas-line);
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.empty-icon,.paper-brief-methods span,.topic-chips button,.lesson-expansion,.lesson-body blockquote,.analysis-quality,.notice:not(.error,.warning),.pdf-toolbar,.pdf-viewport,.note-toolbar,.note-source,.note-preview blockquote,.research-depth,.research-depth-art) {
+  background: var(--atlas-soft);
+  border-color: var(--atlas-line);
+  color: var(--atlas-ink);
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.tag.green,.projects-stance.supports,.projects-valid,.job-status-badge.running,.job-status-badge.done,.analysis-quality-status.verified,.analysis-quality-compact.verified) {
+  color: var(--atlas-steel);
+  background-color: var(--atlas-steel-wash);
+  border-color: var(--atlas-steel-rule);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.analyzed,.analysis-quality-compact.verified) {
+  color: var(--atlas-steel);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.analysis-quality-compact.unverified,.analysis-quality-compact.stale) {
+  color: var(--atlas-muted);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.job-status-badge:not(.running,.done,.waiting,.failed),.analysis-quality-status:not(.verified,.partial,.stale),.analysis-quality-compact.unverified) {
+  color: var(--atlas-muted);
+  background-color: var(--atlas-soft);
+}
+
+:root[data-edition=industrial] .overlay .reader-tags {
+  background: var(--atlas-paper);
+  border-color: var(--atlas-line);
+}
+
+:root[data-edition=industrial] .overlay .reader-tags > summary {
+  color: var(--atlas-muted);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) .tag-kind.method {
+  color: var(--atlas-steel);
+}
+
+:root[data-edition=industrial] body .is-scrolling {
+  scrollbar-color: var(--atlas-rule-strong) transparent;
+}
+
+:root[data-edition=industrial] body .is-scrolling::-webkit-scrollbar-thumb {
+  background-color: var(--atlas-rule-strong);
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.status-dot:not(.amber),.progress > i,.legend > i) {
+  background: var(--atlas-steel);
+  box-shadow: none;
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.paper-title:hover,.paper-brief-toggle,.linked-source-note .text-button,.detail .method-source,.analysis-editor .text-button,.reading-section-heading .eyebrow,.notes-welcome h2,.note-title,.note-backlinks a,.tree-topic-name,.tree-root) {
+  color: var(--atlas-action);
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell) :is(.nav-item,.domain-nav button,.notes-file,.tree-paper):hover {
+  color: var(--atlas-ink);
+  background-color: var(--atlas-soft);
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell) .nav-item.active:hover {
+  background-color: transparent;
+}
+
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.map-section-nav [aria-current],.projects-chapter [aria-current],.tree-paper.selected,.trend-direction-row:has(input:checked),.edition-option[aria-pressed=true]) {
+  color: var(--atlas-ink);
+  border-color: var(--atlas-rule-strong);
+}
+
+:root[data-edition=industrial] .appearance-settings .edition-option[aria-pressed=true] {
+  box-shadow: inset 0 0 0 2px var(--industrial-signal);
+}
+
+:root[data-edition=industrial] .appearance-settings :is(.appearance-controls,.edition-option,.edition-option.industrial .edition-preview) {
+  border-color: var(--atlas-line);
+}
+
+:root[data-edition=industrial] .edition-option.industrial .preview-nav i:not(:nth-child(2)) {
+  background-color: var(--atlas-line);
+}
+
+:root[data-edition=industrial] .app-shell :is(.tree-domain-list li,.tree-topic,.tree-paper) {
+  border-color: var(--atlas-line);
+}
+
+:root[data-edition=industrial] .app-shell .graph-dark {
+  --network-bg: #292a2c;
+  --network-text: #f0efec;
+  --network-subtle: #b9b9bd;
+  --network-border: #55565a;
+}
+
+:root[data-edition=industrial] .relation-panel .atlas-network {
+  background: var(--network-bg);
+  color: var(--network-subtle);
+}
+
+:root[data-edition=industrial] .relation-panel :is(.network-tools,.network-inspector,.paper-legend) {
+  background: var(--network-bg);
+  border-color: var(--network-border);
+  color: var(--network-text);
+  box-shadow: none;
+}
+
+:root[data-edition=industrial] .relation-panel :is(.network-edge,.network-watermark,.network-hint,.paper-short-label) {
+  color: var(--network-subtle);
+}
+
+:root[data-edition=industrial] .relation-panel .paper-short-label {
+  fill: var(--network-text);
+  paint-order: stroke;
+  stroke: var(--network-bg);
+}
+
+:root[data-edition=industrial] :is(.pdf-page-host,.pdf-text-layer) ::selection {
+  background: var(--atlas-mark-wash);
+}
+
+@supports (appearance: base-select) {
+  :root[data-edition=industrial] .app-shell select::picker-icon {
+    border-color: var(--atlas-muted);
+  }
+  :root[data-edition=industrial] .app-shell select::picker(select) {
+    background: var(--atlas-paper);
+    color: var(--atlas-ink);
+    border-color: var(--atlas-line);
+    border-radius: 3px;
+    box-shadow: 0 8px 24px #26262620;
+    scrollbar-color: var(--atlas-rule-strong) transparent;
+  }
+  :root[data-edition=industrial] .app-shell select option {
+    color: var(--atlas-ink);
+    border-radius: 2px;
+  }
+  :root[data-edition=industrial] .app-shell select option:is(:hover,:focus) {
+    background: var(--atlas-soft);
+  }
+  :root[data-edition=industrial] .app-shell select option:checked {
+    background: var(--atlas-mark-wash);
+  }
+  :root[data-edition=industrial] .app-shell select option::checkmark {
+    color: var(--atlas-action);
+  }
+}
+
+@supports not (appearance: base-select) {
+  :root[data-edition=industrial] .app-shell select:not([multiple]) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23595958' stroke-width='1.7'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  }
+}
+
+/* Theme all scrolling surfaces, including lazily loaded panels and native pickers. */
+:root[data-edition=industrial] body *,
+:root[data-edition=industrial] body .is-scrolling {
+  scrollbar-color: #aaa8a0 transparent !important;
+}
+:root[data-edition=industrial] body *::-webkit-scrollbar-thumb,
+:root[data-edition=industrial] body .is-scrolling::-webkit-scrollbar-thumb {
+  background-color: #aaa8a0 !important;
+}:root[data-edition=industrial] { scrollbar-color: #aaa8a0 transparent; }

@@ -1,0 +1,78 @@
+{
+  "created": "2026-09-27",
+  "assets": [
+    {
+      "path": "/spatial/overview.glb",
+      "bytes": 413624,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/papers.glb",
+      "bytes": 255704,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/map.glb",
+      "bytes": 241880,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/trends.glb",
+      "bytes": 493968,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/surveys.glb",
+      "bytes": 257188,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/saved.glb",
+      "bytes": 255220,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/notes.glb",
+      "bytes": 318232,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/jobs.glb",
+      "bytes": 289668,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/settings.glb",
+      "bytes": 285860,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    },
+    {
+      "path": "/spatial/folio.glb",
+      "bytes": 237936,
+      "origin": "Original parametric model",
+      "source": "scripts/build-pavilion-assets.mjs"
+    }
+  ],
+  "images": [
+    {
+      "path": "/spatial/pavilion-environment.png",
+      "origin": "Built-in imagegen",
+      "prompt": "docs/design/image-prompts.md"
+    },
+    {
+      "path": "/design/pavilion-concept.png",
+      "origin": "Built-in imagegen concept board",
+      "prompt": "docs/design/image-prompts.md"
+    }
+  ],
+  "rights": "Project-authored geometry and materials. No movie or game assets redistributed."
+}

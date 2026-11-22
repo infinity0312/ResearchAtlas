@@ -1,0 +1,3 @@
+import {Component,type ReactNode} from 'react';
+type Props={children:ReactNode;resetKey?:string};
+export default class PageBoundary extends Component<Props,{failed:boolean}>{state={failed:false};componentDidUpdate(previous:Props){if(previous.resetKey!==this.props.resetKey&&this.state.failed)this.setState({failed:false})}static getDerivedStateFromError(){return {failed:true}}render(){return this.state.failed?<section className="panel page-error" role="alert"><h2>这个页面暂时无法显示</h2><p>研究数据仍然保留。可以重试，或从侧边栏进入其他页面。</p><button className="button primary" onClick={()=>this.setState({failed:false})}>重新加载此页</button></section>:this.props.children}}

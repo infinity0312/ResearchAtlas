@@ -1,0 +1,8 @@
+.markdown-body .katex-display{display:block;width:100%;max-width:100%;text-align:center;overflow-x:auto;overflow-y:hidden;padding:.6em 0;box-sizing:border-box}
+.markdown-body .katex-display>.katex{display:block;width:max-content;min-width:100%;text-align:center;white-space:nowrap}
+.method-card-heading>div{flex:1;min-width:0}
+.method-card-heading .math-text{display:block;width:100%}
+.math-text .katex-display{display:block;width:100%;max-width:100%;text-align:center;overflow-x:auto;overflow-y:hidden;padding:.6em 0;box-sizing:border-box}
+.math-text .katex-display>.katex{display:block;width:max-content;min-width:100%;text-align:center;white-space:nowrap}
+/* KaTeX equation tags are not the application's badge component. */
+.katex-display .katex-html>.tag{display:inline;position:absolute;right:0;top:0;background:none;border:0;border-radius:0;padding:0;color:inherit;font-size:inherit;line-height:inherit}

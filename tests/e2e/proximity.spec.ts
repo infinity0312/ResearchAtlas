@@ -1,0 +1,9 @@
+import {test,expect} from '@playwright/test';
+async function setup(page:any,motion='system'){await page.addInitScript((motion:string)=>{localStorage.setItem('atlas.appearance.v1',JSON.stringify({edition:'prism',effects:'auto',motion,quality:'balanced'}));sessionStorage.setItem('atlas.terminal.entered','1')},motion);await page.goto('/#page=overview')}
+test('proximity uses WebGL, responds before entry and restores the card',async({page})=>{
+ await setup(page);const card=page.locator('.metric').first();await card.scrollIntoViewIfNeeded();const box=(await card.boundingBox())!;await page.mouse.move(box.x+box.width/2,box.y-15);await expect(card).toHaveAttribute('data-proximity','active');await expect(page.locator('.proximity-light')).toHaveAttribute('data-renderer','webgl-specular');await expect.poll(()=>card.evaluate((el:HTMLElement)=>el.style.transform)).not.toBe('');await page.mouse.move(3,3);await expect(card).not.toHaveAttribute('data-proximity','active');expect(await card.evaluate((el:HTMLElement)=>el.style.transform)).toBe('');
+});
+test('reduced motion removes proximity rendering',async({page})=>{await setup(page,'reduced');await expect(page.locator('.metric').first()).toBeVisible();await expect(page.locator('.proximity-light')).toHaveCount(0)});
+test('chart remains clickable and GPU loss leaves the surface intact',async({page})=>{
+ await setup(page);const chart=page.locator('.chart').first();await chart.scrollIntoViewIfNeeded();await chart.hover();await expect(chart).toHaveAttribute('data-proximity','active');await expect(page.locator('.proximity-light')).toHaveAttribute('data-renderer','webgl-specular');await page.locator('.proximity-light').evaluate((c:HTMLCanvasElement)=>c.getContext('webgl')?.getExtension('WEBGL_lose_context')?.loseContext());await expect(page.locator('.proximity-light')).toHaveCount(0);await expect(chart).toBeVisible();await expect(chart).not.toHaveAttribute('data-proximity','active');
+});

@@ -1,0 +1,11 @@
+.job-status-line{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:9px 0;color:var(--muted);font-size:11px}.job-status-badge{padding:3px 9px;border-radius:6px;background:#edf0ee;color:#67786d}.job-status-badge.running{background:#e1f1e9;color:#277457}.job-status-badge.failed{background:#fbece9;color:#a85744}.job-status-badge.waiting{background:#faf1db;color:#937322}.job-status-badge.done{background:#eaf1e8;color:#56714f}.job-resume{display:block;font-size:11px;color:var(--muted);margin:8px 0}.job-main{min-width:0}.job-main p{overflow-wrap:anywhere}.job-row{align-items:center}.job-date{white-space:nowrap}
+/* Keep gutter geometry stable; reveal the thumb only during scrolling. */
+html body *{scrollbar-width:thin;scrollbar-color:transparent transparent}
+html body *.is-scrolling{scrollbar-color:#a0afa6 transparent}
+html body *::-webkit-scrollbar-thumb{background-color:transparent}
+html body *.is-scrolling::-webkit-scrollbar-thumb{background-color:#a0afa6;border-radius:8px}
+
+@media(prefers-reduced-motion:no-preference){.atlas-network .network-node{transition:opacity 120ms ease}.atlas-network .network-edge{transition:opacity 120ms ease,stroke 120ms ease}.atlas-network .network-scene{transition:opacity 160ms ease}}
+
+.job-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.trend-missing{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.trend-missing>span{flex:1 1 280px}.job-status-badge.paused{background:#e9edf6;color:#526a91}

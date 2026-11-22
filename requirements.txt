@@ -1,0 +1,11 @@
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+sqlalchemy>=2.0,<3
+httpx>=0.28,<1
+pypdf>=6,<7
+defusedxml>=0.7,<1
+python-multipart>=0.0.20,<1
+pytest>=8,<10
+beautifulsoup4>=4.12,<5
+fonttools>=4.66,<5
+pymupdf>=1.28,<2

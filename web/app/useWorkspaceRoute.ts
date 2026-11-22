@@ -1,0 +1,20 @@
+import {useEffect,useState,useRef,useCallback,startTransition,type SetStateAction} from 'react';
+import type {ProjectFocus,TrendFocus} from '../product/projectNavigation';
+export type Page='overview'|'papers'|'map'|'surveys'|'saved'|'jobs'|'settings'|'notes'|'trends'|'projects';
+export const pageLabels:Record<Page,string>={overview:'研究概览',papers:'发现论文',map:'领域地图',surveys:'综述知识库',saved:'我的收藏',jobs:'后台任务',settings:'工作台设置',notes:'笔记系列',trends:'领域趋势',projects:'研发项目'};
+const pageOf=(value:string|null):Page=>value&&Object.hasOwn(pageLabels,value)?value as Page:'overview';
+const routeId=(value:string|null)=>value&&/^[a-zA-Z0-9_-]{1,80}$/.test(value)?value:undefined;
+export function parseLocation(hash=location.hash){const p=new URLSearchParams(hash.slice(1)),page=pageOf(p.get('page')),id=routeId(p.get('project_id'));const projectTarget:ProjectFocus|null=page==='projects'&&id?{id,evidenceId:routeId(p.get('evidence_id')),candidateId:routeId(p.get('candidate_id')),trendLeadId:routeId(p.get('trend_lead_id'))}:null;const trendId=routeId(p.get('trend_id')),interval=p.get('trend_interval'),start=p.get('trend_start')||'',end=p.get('trend_end')||'',period=p.get('trend_period')||'',pattern=interval==='month'?/^\d{4}-(0[1-9]|1[0-2])$/:/^\d{4}$/;const trendTarget:TrendFocus|null=page==='trends'&&trendId&&['year','month'].includes(interval||'')&&pattern.test(start)&&pattern.test(end)&&start<=end?{id:trendId,start,end,interval:interval as 'year'|'month',...(pattern.test(period)?{period}:{})}:null;return {page,projectTarget,trendTarget,domain:p.get('domain')||'',mapDomains:p.getAll('domain_ids').length?p.getAll('domain_ids'):(p.get('domain')?[p.get('domain')!]:[]),days:p.has('days')&&[0,7,30,90].includes(Number(p.get('days')))?Number(p.get('days')):30}}
+export function useWorkspaceRoute(){const [initial]=useState(()=>parseLocation());const [page,commitPage]=useState(initial.page),[domain,setDomain]=useState(initial.domain),[mapDomains,setMapDomains]=useState(initial.mapDomains),[days,setDays]=useState(initial.days),[projectTarget,setProjectTarget]=useState(initial.projectTarget),[trendTarget,setTrendTarget]=useState(initial.trendTarget);
+ const generation=useRef(0),currentPage=useRef(page);currentPage.current=page;
+ const setPage=useCallback((next:SetStateAction<Page>)=>{
+  const target=typeof next==='function'?next(currentPage.current):next,request=++generation.current;
+  const load=target==='trends'?import('../Trends'):target==='notes'?import('../Notes'):target==='map'?Promise.all([import('../Hierarchy'),import('../RelationGraph'),import('../MethodMatrix')]):Promise.resolve();
+  void load.catch(()=>{}).then(()=>{if(request===generation.current)startTransition(()=>commitPage(target))});
+ },[]);
+ useEffect(()=>()=>{generation.current++},[]);
+ useEffect(()=>{const change=()=>{const p=parseLocation();setPage(p.page);setDomain(p.domain);setMapDomains(p.mapDomains);setDays(p.days);setProjectTarget(p.projectTarget);setTrendTarget(p.trendTarget)};window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change)},[]);
+ useEffect(()=>{const p=new URLSearchParams({page,days:String(days)});if(domain)p.set('domain',domain);mapDomains.forEach(d=>p.append('domain_ids',d));if(page==='projects'&&projectTarget){p.set('project_id',projectTarget.id);if(projectTarget.evidenceId)p.set('evidence_id',projectTarget.evidenceId);if(projectTarget.candidateId)p.set('candidate_id',projectTarget.candidateId);if(projectTarget.trendLeadId)p.set('trend_lead_id',projectTarget.trendLeadId)}if(page==='trends'&&trendTarget){p.set('trend_id',trendTarget.id);p.set('trend_start',trendTarget.start);p.set('trend_end',trendTarget.end);p.set('trend_interval',trendTarget.interval);if(trendTarget.period)p.set('trend_period',trendTarget.period)}history.replaceState(null,'','#'+p)},[page,domain,days,mapDomains,projectTarget,trendTarget]);
+ return {page,setPage,domain,setDomain,mapDomains,setMapDomains,days,setDays,projectTarget,setProjectTarget,trendTarget,setTrendTarget};
+}
+

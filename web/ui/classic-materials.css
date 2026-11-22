@@ -1,0 +1,28 @@
+/* Exact classic palette with restrained material accents; existing layout metrics preserved. */
+:root[data-edition=prism]{--ink:#1c3d34;--muted:#7c8b85;--line:#e5ebe7;--green:#245d4f;--accent:#dceccc;background:#f6f8f7;color:#233c35}
+[data-edition=prism] body{background:#f6f8f7}
+[data-edition=prism] .sidebar{background:#fff;border-right:1px solid #e5ebe7;box-shadow:none}
+[data-edition=prism] .brand{color:#234c3c}[data-edition=prism] :is(.brand small,.nav-label,.local-status){color:#87948a}
+[data-edition=prism] .workspace{background:#f2f5eb;color:#4d6147;border:1px solid #e8eddf;box-shadow:none}
+[data-edition=prism] .nav-item{color:#78847d}[data-edition=prism] .nav-item.active{background:#eaf0de;color:#38552d;box-shadow:none}[data-edition=prism] .nav-item:hover{background:#f0f4e9;color:#38552d}
+[data-edition=prism] .domain-nav button{color:#7b897f}[data-edition=prism] .domain-nav button:hover,[data-edition=prism] .domain-nav .selected{background:#edf3e5;color:#4c6840}
+[data-edition=prism] .topbar{background:#fafcf9;border-color:#e5ebe7}
+[data-edition=prism] .button.primary{background:#245d4f;border-color:#245d4f;box-shadow:0 2px 5px #245d4f16}[data-edition=prism] .button.primary:hover{background:#346e5e}
+[data-edition=prism] .page-heading h1,[data-edition=prism] .panel-title h2,[data-edition=prism] .paper-title{color:#1c3d34}
+[data-edition=prism] :is(.panel,.metric,.relation-panel,.notes-workspace,.trend-signals){background:#fff;border-color:#e5ebe7;box-shadow:0 3px 15px #203e3004}
+[data-edition=prism] .metric strong{color:#245d4f}
+[data-edition=prism] .trend-controls{background:#fff;box-shadow:none}
+[data-edition=prism] .trend-tree-root,[data-edition=prism] .trend-tree-row{gap:7px;background:transparent;box-shadow:none;border:0;border-radius:0}
+[data-edition=prism] .trend-tree-root{padding:0;min-height:42px}[data-edition=prism] .trend-tree-row{padding:9px 0}
+[data-edition=prism] .trend-tree-group{padding:8px 0;border-bottom:1px solid var(--line);margin:0}
+[data-edition=prism] .trend-tree-children{margin:8px 0 4px 14px;padding-left:14px;border-left:1px solid #dbe5de}
+[data-edition=prism] .trend-tree label span{font-weight:400;line-height:1.7}
+.branch-switch{width:13px;height:13px;display:block;position:relative}.branch-switch:before,.branch-switch:after{content:'';position:absolute;background:currentColor;border-radius:1px;transition:transform .22s,opacity .22s}.branch-switch:before{left:1px;right:1px;top:6px;height:1px}.branch-switch:after{top:1px;bottom:1px;left:6px;width:1px}.branch-switch.is-open:after{transform:rotate(90deg);opacity:0}
+[data-edition=prism] .trend-tree input[type=checkbox]{appearance:none;width:16px;height:16px;min-width:16px;max-width:16px;min-height:16px;max-height:16px;padding:0;flex:0 0 16px;margin:0;border-radius:50%;border:1px solid #a4b4a8;background:#fff;display:grid;place-items:center;cursor:pointer;transition:box-shadow .2s,border-color .2s}
+[data-edition=prism] .trend-tree input:checked{border-color:#628a64;box-shadow:0 0 0 3px #edf3e7}
+[data-edition=prism] .trend-tree input:checked:after{content:'';width:8px;height:8px;border-radius:50%;background:#628a64}
+[data-edition=prism] .trend-tree input:disabled{opacity:.4}
+[data-edition=prism] .trend-tree-row:has(input:checked) label span{color:#36583d}
+[data-edition=prism] .spatial-stage canvas{cursor:default}
+
+.dimension-toggle{display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:8px;background:#edf2ee}.dimension-toggle span{padding:5px 9px;font-size:11px;color:#87988e;border-radius:5px}.dimension-toggle .active{background:white;color:#245d4f;box-shadow:0 1px 4px #234a3517}

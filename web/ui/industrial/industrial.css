@@ -1,0 +1,314 @@
+/* Industrial Atlas. Upstream asset provenance is recorded in the derived skill. */
+.edition-options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.edition-name > svg:first-child { margin-left: 0; flex: none; }
+.edition-name > .edition-check { margin-left: auto; flex: none; }
+.edition-option.industrial .edition-preview {
+  background: #efefe9 url('./endfield-contour.svg') right 32% / 72% auto no-repeat;
+  border-radius: 0;
+}
+.edition-option.industrial .preview-nav { background: #fafaf6; border-right: 1px solid #ccc9c0; }
+.edition-option.industrial .preview-nav i,
+.edition-option.industrial .preview-content :is(b, i, span) { border-radius: 0; }
+.edition-option.industrial .preview-nav i:nth-child(2) { background: #f2ed64; }
+.edition-option.industrial .preview-content b { width: 56%; background: #262626; }
+.edition-option.industrial .preview-content i { border: 1px solid #d1cec5; }
+.edition-option.industrial .preview-content > span { background: #d1cec5; }
+
+:root[data-edition=industrial] {
+  --atlas-ground: #f4f4f2;
+  --atlas-paper: #fdfdfa;
+  --atlas-ink: #262626;
+  --atlas-muted: #595958;
+  --atlas-line: #d8d6d0;
+  --atlas-soft: #eeece6;
+  --atlas-action: #424242;
+  --atlas-brass: #d3d4ba;
+  --industrial-signal: #f2ed64;
+  --industrial-ruler: #aaa8a0;
+  --industrial-fold: 8px;
+  --industrial-snap: cubic-bezier(.16,1,.3,1);
+  --industrial-mech: cubic-bezier(.7,0,.2,1);
+  --industrial-press: 100ms;
+  --industrial-reveal: 200ms;
+  --ink: var(--atlas-ink);
+  --muted: var(--atlas-muted);
+  --line: var(--atlas-line);
+  --green: var(--atlas-action);
+  --accent: var(--atlas-soft);
+  --radius: 4px;
+  color: var(--atlas-ink);
+  background: var(--atlas-ground);
+}
+
+:root[data-edition=industrial] body { background: var(--atlas-ground); }
+:root[data-edition=industrial] .app-shell {
+  background: var(--atlas-ground);
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .app-shell .sidebar {
+  background: #f9f9f5;
+  border-right: 1px solid var(--atlas-line);
+  box-shadow: none;
+}
+:root[data-edition=industrial] .app-shell :is(.brand,.nav-item,.domain-nav button) { color: var(--atlas-ink); }
+:root[data-edition=industrial] .app-shell .brand {
+  gap: 9px;
+  margin-bottom: 6px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--atlas-line);
+  font-size: 15px;
+  font-weight: 720;
+  white-space: nowrap;
+}
+:root[data-edition=industrial] .app-shell :is(.brand small,.nav-label) {
+  color: var(--atlas-muted);
+  letter-spacing: .09em;
+}
+:root[data-edition=industrial] .app-shell .workspace {
+  background: var(--atlas-soft);
+  border-color: var(--atlas-line);
+  border-radius: 2px;
+  box-shadow: none;
+}
+:root[data-edition=industrial] .app-shell :is(.avatar,.top-avatar) {
+  background: var(--atlas-soft);
+  border: 1px solid var(--atlas-line);
+  border-radius: 2px;
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .app-shell .nav-item {
+  position: relative;
+  isolation: isolate;
+  color: var(--atlas-muted);
+  background: transparent;
+  border-radius: 2px;
+  transition: color var(--industrial-press);
+}
+:root[data-edition=industrial] .app-shell .nav-item:hover { background: var(--atlas-soft); color: var(--atlas-ink); }
+:root[data-edition=industrial] .app-shell .nav-item.active {
+  background: transparent;
+  color: var(--atlas-ink);
+  font-weight: 680;
+}
+:root[data-edition=industrial] .app-shell .nav-item.active::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  border-radius: 0;
+  background: var(--industrial-signal);
+  clip-path: polygon(0 0, calc(100% - var(--industrial-fold)) 0, 100% var(--industrial-fold), 100% 100%, 0 100%);
+  animation: industrial-index-in var(--industrial-reveal) var(--industrial-mech) both;
+}
+:root[data-edition=industrial] .app-shell .domain-nav button.selected { background: var(--atlas-soft); }
+:root[data-edition=industrial] .app-shell .topbar {
+  background: var(--atlas-paper);
+  border-color: var(--atlas-line);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+:root[data-edition=industrial] .app-shell :is(.breadcrumb,.search-shortcut) { color: var(--atlas-muted); }
+:root[data-edition=industrial] .app-shell .search-shortcut { border-radius: 2px; background: transparent; }
+
+:root[data-edition=industrial] .app-shell .page-heading {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: 140px;
+  padding: 22px 24px 23px;
+  margin-bottom: 23px;
+  background: var(--atlas-paper);
+  border: 1px solid var(--atlas-line);
+  border-left: 3px solid var(--atlas-ink);
+}
+:root[data-edition=industrial] .app-shell .page-heading::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 11px;
+  width: 45px;
+  height: 7px;
+  pointer-events: none;
+  background: repeating-linear-gradient(-45deg, transparent 0 5px, var(--industrial-ruler) 5px 6.5px);
+}
+:root[data-edition=industrial] .app-shell .page-heading .eyebrow {
+  color: var(--atlas-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+:root[data-edition=industrial] .app-shell .page-heading h1 {
+  color: var(--atlas-ink);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 730;
+  letter-spacing: -.025em;
+}
+:root[data-edition=industrial] .app-shell .page-heading p { color: var(--atlas-muted); }
+:root[data-edition=industrial] .app-shell .heading-dot { color: var(--atlas-action); }
+:root[data-edition=industrial] .atlas-workspace:has(.projects-detail-head) .page-heading {
+  min-height: 0;
+  padding: 14px 20px;
+  margin-bottom: 14px;
+}
+
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.button,.edition-option,input,textarea,select) {
+  border-radius: 3px;
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) .button {
+  border-color: var(--atlas-line);
+  color: var(--atlas-ink);
+  box-shadow: none;
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) .button.primary {
+  background: var(--industrial-signal);
+  border-color: var(--atlas-ink);
+  color: var(--atlas-ink);
+  font-weight: 680;
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) .button.primary:hover {
+  background: #faf684;
+  border-color: var(--atlas-ink);
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(button,a,input,textarea,select,summary,[tabindex]):focus-visible {
+  outline: 2px solid var(--atlas-action);
+  outline-offset: 3px;
+}
+:root[data-edition=industrial] :is(.app-shell,.overlay) :is(.panel,.metric,.relation-panel,.paper-view,.notes-workspace) {
+  border-radius: 4px;
+  border-color: var(--atlas-line);
+  box-shadow: none;
+}
+:root[data-edition=industrial] .app-shell :is(.metric strong,.panel-title h2,.paper-title) { color: var(--atlas-ink); }
+:root[data-edition=industrial] .app-shell :is(.paper-row [aria-expanded=true],.map-section-nav [aria-current],.pv-index-list button.active) {
+  box-shadow: inset 0 -2px var(--industrial-ruler);
+}
+:root[data-edition=industrial] .app-shell .graph-view-heading {
+  background: var(--atlas-soft);
+  border-block-start: 1px solid var(--atlas-line);
+  border-inline-start: 3px solid var(--industrial-ruler);
+}
+:root[data-edition=industrial] .app-shell .graph-view-heading h3 { font-weight: 700; }
+:root[data-edition=industrial] .app-shell :is(.graph-research-result,.paper-view-detail,.signal-report) {
+  border-color: var(--atlas-line);
+  border-radius: 2px;
+}
+:root[data-edition=industrial] .app-shell :is(.pv-index-list button.active,.signal-profiles .is-focused) {
+  background: var(--atlas-soft);
+  box-shadow: inset 3px 0 var(--industrial-signal);
+}
+:root[data-edition=industrial] .app-shell .paper-mark {
+  border: 1px solid var(--atlas-line);
+  border-radius: 2px;
+  background: var(--atlas-soft);
+  color: var(--atlas-action);
+}
+:root[data-edition=industrial] .app-shell :is(.paper-inline-brief,.project-inline-brief) {
+  background: var(--atlas-paper);
+  border-inline-start: 2px solid var(--industrial-ruler);
+  border-radius: 0;
+}
+:root[data-edition=industrial] .app-shell :is(.paper-row-expanded,.project-directory-row.is-expanded) {
+  box-shadow: inset 0 -1px var(--atlas-line);
+}
+
+:root[data-edition=industrial] .app-shell .atlas-projects {
+  --ap-ground: var(--atlas-ground);
+  --ap-paper: var(--atlas-paper);
+  --ap-ink: var(--atlas-ink);
+  --ap-muted: var(--atlas-muted);
+  --ap-line: var(--atlas-line);
+  --ap-action: var(--atlas-action);
+}
+:root[data-edition=industrial] .app-shell .atlas-projects :is(.project-directory-row,.projects-detail-head,.atlas-next-action) {
+  border-radius: 2px;
+  box-shadow: none;
+}
+:root[data-edition=industrial] .app-shell .atlas-projects .project-summary-trigger { padding-inline: 20px; }
+:root[data-edition=industrial] .app-shell .atlas-projects .project-row-identity > span { max-width: 66ch; }
+:root[data-edition=industrial] .app-shell .atlas-projects .project-summary-trigger[aria-expanded=true] {
+  background: var(--atlas-soft);
+  box-shadow: inset 4px 0 var(--industrial-signal);
+}
+:root[data-edition=industrial] .app-shell .atlas-projects .atlas-next-action { border-left: 3px solid var(--industrial-ruler); }
+
+:root[data-edition=industrial] .overlay .modal.atlas-reader-modal {
+  border-radius: 4px;
+  box-shadow: 0 18px 70px #26262636;
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .detail-heading {
+  background: linear-gradient(to bottom, var(--atlas-ground), var(--atlas-paper));
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-reader-imprint > span {
+  border-left: 3px solid var(--atlas-action);
+  padding-left: 9px;
+  font-weight: 700;
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-reading-bar.is-compact {
+  background: var(--atlas-paper);
+  box-shadow: 0 3px 0 #2626260b;
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .detail .tabs button.selected {
+  border-color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-reading-bar nav button {
+  border-radius: 0;
+  transition: background-color var(--industrial-press);
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal :is(.atlas-reading-bar nav button[aria-current=location],.atlas-current-source) {
+  background: var(--industrial-signal);
+  border-radius: 0;
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-selected-claim {
+  background: var(--atlas-soft);
+  border-radius: 0;
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-selected-claim::after {
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-source-sign {
+  background: var(--atlas-paper);
+  border-radius: 0;
+  border-top: 2px solid var(--atlas-ink);
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-source-marker {
+  padding: 2px 7px;
+  background: var(--industrial-signal);
+  color: var(--atlas-ink);
+}
+:root[data-edition=industrial] .overlay .atlas-reader-modal .linked-source-note { border-radius: 2px; }
+:root[data-edition=industrial][data-motion=full] .overlay .atlas-reader-modal .atlas-source-sign {
+  animation: industrial-source-in var(--industrial-reveal) var(--industrial-snap) both;
+}
+
+:root[data-edition=industrial][data-density=compact] .app-shell :is(.nav-item,.domain-nav button) { padding-block: 7px; }
+:root[data-edition=industrial][data-density=compact] .app-shell .paper-row { padding-block: 14px; }
+
+@keyframes industrial-index-in {
+  from { opacity: .4; transform: translateX(-3px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes industrial-source-in {
+  from { opacity: .6; transform: translateX(4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 900px) {
+  .edition-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .edition-options { grid-template-columns: minmax(0, 1fr); }
+  :root[data-edition=industrial] .app-shell .page-heading { min-height: 0; padding: 17px 15px; gap: 14px; }
+  :root[data-edition=industrial] .app-shell .page-heading h1 { font-size: 28px; }
+  :root[data-edition=industrial] .app-shell .page-heading::after { width: 20px; right: 9px; }
+  :root[data-edition=industrial] .app-shell .atlas-projects .project-summary-trigger { padding-inline: 14px; }
+  :root[data-edition=industrial] .overlay .atlas-reader-modal .atlas-reading-bar.is-compact { box-shadow: none; }
+}

@@ -1,0 +1,429 @@
+[
+  {
+    "domain": "分子与材料",
+    "name": "性质预测",
+    "query": "(abs:\"molecular property prediction\")",
+    "description": "从分子或材料结构预测物理化学性质与活性。",
+    "preset": "preset-0"
+  },
+  {
+    "domain": "分子与材料",
+    "name": "分子生成",
+    "query": "(abs:\"molecular generation\")",
+    "description": "在性质、结构或合成约束下生成分子。",
+    "preset": "preset-1"
+  },
+  {
+    "domain": "分子与材料",
+    "name": "材料逆向设计",
+    "query": "(abs:\"inverse materials design\" OR abs:\"crystal generation\")",
+    "description": "按目标性能生成晶体、组分及材料结构。",
+    "preset": "preset-2"
+  },
+  {
+    "domain": "分子与材料",
+    "name": "势能与模拟",
+    "query": "(abs:\"machine learning potential\" OR abs:\"neural network potential\")",
+    "description": "学习原子势能、力与分子动力学近似。",
+    "preset": "preset-3"
+  },
+  {
+    "domain": "分子与材料",
+    "name": "反应预测与逆合成",
+    "query": "(abs:\"retrosynthesis\" OR abs:\"reaction prediction\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "预测化学反应产物、条件和合成路线。",
+    "preset": null
+  },
+  {
+    "domain": "分子与材料",
+    "name": "电子结构与量子化学",
+    "query": "(abs:\"neural wavefunction\" OR abs:\"machine learning density functional\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "学习电子结构、波函数与量子化学近似。",
+    "preset": null
+  },
+  {
+    "domain": "分子与材料",
+    "name": "分子筛选与对接",
+    "query": "(abs:\"molecular docking\" OR abs:\"virtual screening\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "预测配体结合姿态、亲和力并筛选候选物。",
+    "preset": null
+  },
+  {
+    "domain": "分子与材料",
+    "name": "晶体结构解析",
+    "query": "(abs:\"crystal structure determination\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "从衍射或实验观测反演晶体结构。",
+    "preset": null
+  },
+  {
+    "domain": "分子与材料",
+    "name": "光谱与表征反演",
+    "query": "(abs:\"spectral prediction\" OR abs:\"spectroscopy machine learning\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "预测、解释光谱并由表征数据反演结构。",
+    "preset": null
+  },
+  {
+    "domain": "分子与材料",
+    "name": "催化与能源材料",
+    "query": "(abs:\"catalyst discovery\" OR abs:\"battery machine learning\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "面向催化、电池和能源转化的材料建模。",
+    "preset": null
+  },
+  {
+    "domain": "分子与材料",
+    "name": "聚合物与软物质",
+    "query": "(abs:\"polymer informatics\" OR abs:\"polymer machine learning\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "聚合物、复合材料和软物质的性质与设计。",
+    "preset": null
+  },
+  {
+    "domain": "分子与材料",
+    "name": "自动化实验与主动发现",
+    "query": "(abs:\"self-driving laboratory\" OR abs:\"autonomous chemistry\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "以主动学习及机器人闭环选择并执行实验。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "蛋白质结构",
+    "query": "(abs:\"protein structure prediction\")",
+    "description": "由序列等信息预测蛋白质及复合物结构。",
+    "preset": "preset-4"
+  },
+  {
+    "domain": "生命科学",
+    "name": "蛋白质设计",
+    "query": "(abs:\"protein design\" OR abs:\"protein generation\")",
+    "description": "设计满足功能或结构目标的蛋白质序列。",
+    "preset": "preset-5"
+  },
+  {
+    "domain": "生命科学",
+    "name": "基因组学",
+    "query": "(abs:\"genomics\" OR abs:\"genomic\")",
+    "description": "分析基因序列、变异与调控机制。",
+    "preset": "preset-6"
+  },
+  {
+    "domain": "生命科学",
+    "name": "单细胞分析",
+    "query": "(abs:\"single-cell\" OR abs:\"single cell\")",
+    "description": "单细胞表征、整合、注释和状态预测。",
+    "preset": "preset-7"
+  },
+  {
+    "domain": "生命科学",
+    "name": "RNA结构与设计",
+    "query": "(abs:\"RNA structure\" OR abs:\"RNA design\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "预测RNA结构、功能并设计序列。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "药物反应与转化医学",
+    "query": "(abs:\"drug response prediction\" OR abs:\"drug perturbation\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "建模细胞药物反应及向疾病治疗的转化。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "疾病机理建模（背景）",
+    "query": "(abs:\"disease mechanistic model\")",
+    "description": "为AI建模提供疾病动力学和机制基础。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "空间组学与多组学整合",
+    "query": "(abs:\"spatial transcriptomics\" OR abs:\"multi-omics integration\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "整合空间、转录、蛋白和表观组学测量。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "蛋白质功能与相互作用",
+    "query": "(abs:\"protein function prediction\" OR abs:\"protein interaction prediction\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "预测蛋白功能、互作与生物网络。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "细胞扰动与命运预测",
+    "query": "(abs:\"cell perturbation\" OR abs:\"cell fate prediction\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "预测基因或环境扰动后的细胞状态变化。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "生物成像与形态分析",
+    "query": "(abs:\"bioimage analysis\" OR abs:\"cell morphology\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "分析细胞、组织显微影像及形态表型。",
+    "preset": null
+  },
+  {
+    "domain": "生命科学",
+    "name": "免疫与微生物组",
+    "query": "(abs:\"microbiome machine learning\" OR abs:\"immune repertoire\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "建模微生物群落、免疫受体和抗原识别。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "表示学习",
+    "query": "(abs:\"representation learning\")",
+    "description": "自监督、对比学习和可迁移特征表征。",
+    "preset": "preset-8"
+  },
+  {
+    "domain": "机器学习",
+    "name": "生成模型",
+    "query": "(abs:\"generative model\" OR abs:\"diffusion model\" OR abs:\"flow matching\")",
+    "description": "显式或隐式学习数据分布并生成样本。",
+    "preset": "preset-9"
+  },
+  {
+    "domain": "机器学习",
+    "name": "优化与泛化",
+    "query": "(abs:\"generalization\" OR abs:\"optimization\")",
+    "description": "研究训练优化、泛化规律及学习理论。",
+    "preset": "preset-10"
+  },
+  {
+    "domain": "机器学习",
+    "name": "强化学习",
+    "query": "(abs:\"reinforcement learning\")",
+    "description": "通过环境反馈学习序贯决策策略。",
+    "preset": "preset-11"
+  },
+  {
+    "domain": "机器学习",
+    "name": "联邦与隐私学习",
+    "query": "(abs:\"federated learning\" OR abs:\"differential privacy\")",
+    "description": "分布式数据协同学习及隐私保护。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "持续与元学习",
+    "query": "(abs:\"continual learning\" OR abs:\"meta learning\")",
+    "description": "跨任务快速适应与持续学习避免遗忘。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "不确定性与可信学习",
+    "query": "(abs:\"uncertainty estimation\" OR abs:\"robust machine learning\")",
+    "description": "校准、鲁棒性、分布外泛化及可靠预测。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "因果与可解释学习",
+    "query": "(abs:\"causal learning\" OR abs:\"interpretable machine learning\")",
+    "description": "因果识别、反事实推断和模型解释。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "概率与贝叶斯学习",
+    "query": "(abs:\"Bayesian learning\" OR abs:\"probabilistic model\")",
+    "description": "概率模型、后验推断与贝叶斯决策。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "主动学习",
+    "query": "(abs:\"active learning\")",
+    "description": "按信息价值选择待标注或待观测样本。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "训练与推理系统",
+    "query": "(abs:\"distributed training\" OR abs:\"efficient inference\")",
+    "description": "训练并行、内存管理和推理系统优化。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "大模型与推理",
+    "query": "(abs:\"language model reasoning\" OR abs:\"large language model\")",
+    "description": "语言基础模型、推理、工具使用与对齐。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "时序与异常检测",
+    "query": "(abs:\"time series learning\" OR abs:\"anomaly detection\")",
+    "description": "学习时序结构、预测动态与检测异常。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "图学习与几何学习",
+    "query": "(abs:\"graph learning\" OR abs:\"geometric deep learning\")",
+    "description": "图、流形与对称性约束下的学习。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "多模态与跨模态学习",
+    "query": "(abs:\"multimodal learning\" OR abs:\"cross-modal learning\")",
+    "description": "对齐与融合文本、图像、音频等模态。",
+    "preset": null
+  },
+  {
+    "domain": "机器学习",
+    "name": "数据学习与评测",
+    "query": "(abs:\"data-centric AI\" OR abs:\"dataset distillation\")",
+    "description": "数据筛选、合成、蒸馏与模型评测方法。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "医学影像与分割",
+    "query": "(abs:\"medical image segmentation\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "定位并分割医学影像中的解剖结构和病灶。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "医学影像与诊断",
+    "query": "(abs:\"medical image diagnosis\" OR abs:\"computer aided diagnosis\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "影像分类、检测与辅助诊断。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "电子病历与风险预测",
+    "query": "(abs:\"electronic health records\" OR abs:\"risk prediction clinical\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "从纵向临床记录预测风险及疾病进展。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "生存分析与治疗效果",
+    "query": "(abs:\"survival analysis\" OR abs:\"treatment effect estimation\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "估计事件时间、治疗效果及个体化决策。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "医学语言与多模态",
+    "query": "(abs:\"medical language model\" OR abs:\"medical multimodal\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "医学文本理解、报告生成和跨模态推理。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "医学基础模型与评测",
+    "query": "(abs:\"medical foundation model\" OR abs:\"clinical benchmark\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "医学通用表征、基础模型和临床任务评测。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "医学影像重建与配准",
+    "query": "(abs:\"medical image reconstruction\" OR abs:\"medical image registration\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "由测量重建影像及跨扫描空间对齐。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "数字病理",
+    "query": "(abs:\"computational pathology\" OR abs:\"whole slide image\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "基于病理切片的诊断、分型和预后。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "生理信号与可穿戴监测",
+    "query": "(abs:ECG OR abs:EEG OR abs:electrocardiogram OR abs:electroencephalogram OR abs:\"wearable health\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "学习心电、脑电及可穿戴生理监测信号。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "临床决策与手术机器人",
+    "query": "(abs:\"clinical decision support\" OR abs:\"surgical robotics\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "辅助临床决策、手术规划与机器人操作。",
+    "preset": null
+  },
+  {
+    "domain": "医疗",
+    "name": "临床部署与公平性",
+    "query": "(abs:clinical OR abs:healthcare OR abs:medical) AND (abs:fairness OR abs:\"external validation\" OR abs:\"prospective evaluation\" OR abs:\"model drift\") AND (abs:learning OR abs:neural OR abs:\"artificial intelligence\")",
+    "description": "外部验证、前瞻评估、模型漂移和健康公平。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "训练后量化（PTQ）",
+    "query": "((abs:\"post-training quantization\" OR abs:\"post training quantization\" OR ti:GPTQ OR ti:AWQ)) AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "冻结权重后进行校准与低比特映射。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "量化感知训练（QAT）",
+    "query": "((abs:\"quantization-aware training\" OR abs:\"quantization aware training\")) AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "训练中模拟或使用量化算子适应低精度。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "权重与激活量化",
+    "query": "((abs:\"weight quantization\" OR abs:\"activation quantization\" OR ti:SmoothQuant)) AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "联合处理权重和激活的离群值与尺度。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "KV Cache 量化",
+    "query": "((abs:\"KV cache quantization\" OR abs:\"KV-cache quantization\" OR (abs:\"key value\" AND abs:quantization))) AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "压缩注意力键值缓存并控制长上下文误差。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "极低比特与混合精度",
+    "query": "((abs:\"mixed precision\" OR abs:\"low-bit\" OR abs:\"1-bit\" OR abs:\"2-bit\" OR abs:\"binary weights\") AND abs:quantization) AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "二值及极低比特表示和分层混合精度配置。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "量化误差与理论分析",
+    "query": "((abs:\"quantization error\" OR abs:\"quantization theory\" OR abs:\"quantization bound\")) AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "刻画低比特误差、敏感度及其传播。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "量化推理与系统优化",
+    "query": "(abs:quantization AND (abs:\"inference acceleration\" OR abs:\"inference engine\" OR abs:kernel OR abs:hardware)) AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "围绕量化算子的内核、存储与推理吞吐优化。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "低精度格式与训练",
+    "query": "(abs:\"FP8\" OR abs:\"FP4\" OR abs:\"low precision training\") AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "低精度浮点及整数格式与训练稳定性。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "量化评测与校准",
+    "query": "(abs:\"quantization calibration\" OR abs:\"quantization benchmark\") AND (abs:\"language model\" OR abs:transformer OR abs:LLM)",
+    "description": "校准数据、误差评测及低比特能力保持。",
+    "preset": null
+  },
+  {
+    "domain": "大模型量化",
+    "name": "模型压缩理论基础",
+    "query": "(abs:\"optimal brain damage\" OR abs:\"optimal brain surgeon\")",
+    "description": "剪枝与二阶敏感度等压缩理论的历史基础。",
+    "preset": null
+  }
+]

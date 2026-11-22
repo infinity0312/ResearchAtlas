@@ -1,0 +1,15 @@
+.fulltext-review .markdown-body{font-size:15px;line-height:1.95;letter-spacing:.01em;overflow-wrap:anywhere;counter-reset:study-section}
+.fulltext-review .markdown-body>h1{font-size:22px;line-height:1.5;margin:24px 0 18px}
+.fulltext-review .markdown-body>h2{counter-increment:study-section;display:flex;align-items:baseline;gap:12px;font-size:19px;font-weight:600;line-height:1.6;color:var(--ink,#294d3b);margin:36px 0 16px;padding:0 0 12px;border-bottom:1px solid var(--line,#e4ebe5)}
+.fulltext-review .markdown-body>h2::before{content:counter(study-section,decimal-leading-zero);flex:none;font-size:12px;font-weight:500;color:var(--muted,#829084);font-variant-numeric:tabular-nums;letter-spacing:.08em}
+.fulltext-review .markdown-body>h2:first-child{margin-top:0}
+.fulltext-review .markdown-body h3,.fulltext-review .markdown-body h4{font-size:16px;font-weight:600;line-height:1.65;margin:25px 0 12px}
+.fulltext-review .markdown-body p{margin:0 0 1.15em;text-indent:0}
+.fulltext-review .markdown-body ul,.fulltext-review .markdown-body ol{margin:12px 0 22px;padding-left:1.6em}
+.fulltext-review .markdown-body li{margin:.5em 0}
+.fulltext-review .markdown-body blockquote{margin:20px 0;padding:12px 18px;border-left:2px solid #a8bba9;background:var(--surface-subtle,#f6f8f5)}
+.fulltext-review .markdown-body .katex-display{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:14px 4px;margin:20px 0}
+.fulltext-review .markdown-body table{display:block;max-width:100%;width:max-content;overflow-x:auto;border-collapse:collapse;margin:22px 0;font-size:13px;line-height:1.75;font-variant-numeric:tabular-nums}
+.fulltext-review .markdown-body th,.fulltext-review .markdown-body td{padding:11px 15px;border-bottom:1px solid var(--line,#e4ebe5);text-align:left;vertical-align:top;min-width:90px}
+.fulltext-review .markdown-body th{background:var(--surface-subtle,#f6f8f5);font-weight:600}
+@media(max-width:600px){.fulltext-review .markdown-body{font-size:14px;line-height:1.9}.fulltext-review .markdown-body>h2{font-size:17px;margin-top:28px}.fulltext-review .markdown-body th,.fulltext-review .markdown-body td{padding:9px 11px}}

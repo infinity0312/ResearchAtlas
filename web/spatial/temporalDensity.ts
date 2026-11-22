@@ -1,0 +1,2 @@
+// Gaussian local density controls the bundle envelope, never individual stroke thickness.
+export function temporalBundleRadii(times:number[]){if(!times.length)return [];const span=Math.max(...times)-Math.min(...times),bandwidth=Math.max(30*86400000,span/24);const density=times.map(t=>times.reduce((n,s)=>n+Math.exp(-.5*((t-s)/bandwidth)**2),0)),peak=Math.max(2,...density);return density.map(d=>1.15+2.45*Math.sqrt(Math.max(0,(d-1)/(peak-1))));}
