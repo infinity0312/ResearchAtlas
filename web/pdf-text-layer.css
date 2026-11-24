@@ -75,8 +75,8 @@
   }
 
   .highlight{
-    --highlight-bg-color:rgb(180 0 170 / 0.25);
-    --highlight-selected-bg-color:rgb(0 100 0 / 0.25);
+    --highlight-bg-color:rgb(242 237 100 / 0.35);
+    --highlight-selected-bg-color:rgb(242 237 100 / 0.72);
     --highlight-backdrop-filter:none;
     --highlight-selected-backdrop-filter:none;
 
@@ -119,14 +119,12 @@
   }
 
   ::-moz-selection{
-    background:rgba(0 0 255 / 0.25);
-    background:color-mix(in srgb, AccentColor, transparent 50%);
+    background:rgb(242 237 100 / 0.45);
     color:transparent;
   }
 
   ::selection{
-    background:rgba(0 0 255 / 0.25);
-    background:color-mix(in srgb, AccentColor, transparent 50%);
+    background:rgb(242 237 100 / 0.45);
     color:transparent;
   }
 

@@ -39,7 +39,7 @@
  .app-shell .sidebar .brand{padding-right:26px}
  .app-shell .mobile-nav-toggle,.app-shell .mobile-nav-close{display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
  .app-shell .mobile-nav-close{position:absolute;right:12px;top:20px}
- .app-shell .nav-backdrop{display:block;position:fixed;inset:0;z-index:60;background:#163b2738;backdrop-filter:blur(3px)}
+ .app-shell .nav-backdrop{display:block;position:fixed;inset:0;z-index:60;background:#34333038;backdrop-filter:blur(3px)}
  .app-shell .breadcrumb{margin-right:auto}
  .app-shell .topbar{height:64px}
  .app-shell .panel-title{gap:14px}

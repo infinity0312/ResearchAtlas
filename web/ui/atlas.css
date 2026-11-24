@@ -1,21 +1,21 @@
 /* Shared light surfaces. Identity comes from selected objects and adjacent context. */
-:root{--atlas-ground:#f7faf8;--atlas-paper:#fff;--atlas-action:#28785f;--atlas-ink:#223b34;--atlas-muted:#61736a;--atlas-line:#e3ebe6;--atlas-soft:#eaf3ee;--atlas-blue:var(--atlas-action);--atlas-red:var(--atlas-action);--atlas-brass:#bfd6c8}
-:root .app-shell.atlas-workspace{min-height:100dvh;color:var(--atlas-ink);background:var(--atlas-ground);--green:var(--atlas-action);--ink:var(--atlas-ink);--muted:var(--atlas-muted);--line:var(--atlas-line);--accent:var(--atlas-soft)}
+:root{--atlas-ground:#fbfaf7;--atlas-paper:#fff;--atlas-action:#676663;--atlas-ink:#373633;--atlas-muted:#71706d;--atlas-line:#ebeae7;--atlas-soft:#f3f2ef;--atlas-blue:var(--atlas-action);--atlas-red:var(--atlas-action);--atlas-brass:#d2d1ce}
+:root .app-shell.atlas-workspace{min-height:100dvh;color:var(--atlas-ink);background:var(--atlas-ground);--control-ink:var(--atlas-action);--ink:var(--atlas-ink);--muted:var(--atlas-muted);--line:var(--atlas-line);--accent:var(--atlas-soft)}
 :root .app-shell.atlas-workspace .sidebar{inset:0 auto 0 0;background:#fff;border:0;border-right:1px solid var(--atlas-line);border-radius:0;box-shadow:none;padding-top:28px}
 :root .app-shell.atlas-workspace .brand{color:var(--atlas-ink);font-weight:600;letter-spacing:-.4px}
 :root .app-shell.atlas-workspace .brand img{width:30px;height:30px;filter:none;opacity:1}
 :root .app-shell.atlas-workspace .brand small{color:var(--atlas-muted);letter-spacing:.4px}
-:root .app-shell.atlas-workspace .workspace{border:1px solid #e8efe9;background:#f8fbf8;color:var(--atlas-ink);border-radius:8px;box-shadow:none}
+:root .app-shell.atlas-workspace .workspace{border:1px solid #efeeeb;background:#fcfbf8;color:var(--atlas-ink);border-radius:8px;box-shadow:none}
 :root .app-shell.atlas-workspace .workspace small{color:var(--atlas-muted)}
-:root .app-shell.atlas-workspace .avatar{border-radius:7px;color:var(--atlas-action);background:#eaf3e7}
-:root .app-shell.atlas-workspace .workspace-dot{background:#8ab69b;box-shadow:none}
+:root .app-shell.atlas-workspace .avatar{border-radius:7px;color:var(--atlas-action);background:#f2f1ee}
+:root .app-shell.atlas-workspace .workspace-dot{background:#adaca9;box-shadow:none}
 :root .app-shell.atlas-workspace .nav-label{color:var(--atlas-muted);font-size:10px;letter-spacing:.7px}
-:root .app-shell.atlas-workspace .nav-item{position:relative;min-height:42px;border-radius:7px;color:#61776b;font-weight:450;transition:background 120ms,color 120ms}
-:root .app-shell.atlas-workspace .nav-item:hover{background:#f0f6f1;color:var(--atlas-action)}
-:root .app-shell.atlas-workspace .nav-item.active{background:#eaf3ed;color:var(--atlas-action);box-shadow:none;font-weight:550}
+:root .app-shell.atlas-workspace .nav-item{position:relative;min-height:42px;border-radius:7px;color:#73726f;font-weight:450;transition:background 120ms,color 120ms}
+:root .app-shell.atlas-workspace .nav-item:hover{background:#f6f5f2;color:var(--atlas-action)}
+:root .app-shell.atlas-workspace .nav-item.active{background:#f3f2ef;color:var(--atlas-action);box-shadow:none;font-weight:550}
 :root .app-shell.atlas-workspace .nav-item.active:before{display:none}
-:root .app-shell.atlas-workspace .domain-nav button{color:#61766a;border-radius:7px}
-:root .app-shell.atlas-workspace .domain-nav button:hover{background:#f1f6f2;color:var(--atlas-action)}
+:root .app-shell.atlas-workspace .domain-nav button{color:#73726f;border-radius:7px}
+:root .app-shell.atlas-workspace .domain-nav button:hover{background:#f7f6f3;color:var(--atlas-action)}
 :root .app-shell.atlas-workspace .domain-nav small{color:var(--atlas-muted)}
 :root .app-shell.atlas-workspace .local-status{color:var(--atlas-muted);border-color:var(--atlas-line)}
 :root .app-shell.atlas-workspace .sidebar-bottom{border-color:var(--atlas-line)}
@@ -23,29 +23,29 @@
 :root .app-shell.atlas-workspace .topbar{height:64px;background:#ffffffc9;border-color:var(--atlas-line);box-shadow:none;backdrop-filter:blur(12px)}
 :root .app-shell.atlas-workspace .breadcrumb{color:var(--atlas-muted);font-size:12px}
 :root .app-shell.atlas-workspace .breadcrumb strong{color:var(--atlas-ink);font-weight:550}
-:root .app-shell.atlas-workspace .top-avatar{background:#eaf3e8;color:var(--atlas-action);box-shadow:none;border:0;border-radius:8px}
+:root .app-shell.atlas-workspace .top-avatar{background:#f2f1ee;color:var(--atlas-action);box-shadow:none;border:0;border-radius:8px}
 :root .app-shell.atlas-workspace .search-shortcut{color:var(--atlas-muted);background:transparent;border-color:var(--atlas-line);border-radius:7px}
 :root .app-shell.atlas-workspace main{background:transparent;padding-top:28px}
 :root .app-shell.atlas-workspace .page-heading{padding:0 0 18px;margin-bottom:22px;border-bottom:0}
 :root .app-shell.atlas-workspace .page-heading h1{font-size:30px;font-weight:550;line-height:1.35;letter-spacing:-.7px;color:var(--atlas-ink)}
 :root .app-shell.atlas-workspace .page-heading p{font-size:13px;line-height:1.85;color:var(--atlas-muted);max-width:620px}
-:root .app-shell.atlas-workspace .eyebrow{font-size:9px;letter-spacing:1.3px;color:#61816e}
-:root .app-shell.atlas-workspace .heading-dot{color:#83aa91}
+:root .app-shell.atlas-workspace .eyebrow{font-size:9px;letter-spacing:1.3px;color:#7b7a77}
+:root .app-shell.atlas-workspace .heading-dot{color:#a2a19e}
 :root .app-shell.atlas-workspace:has(.projects-detail-head) .page-heading{padding-bottom:10px;margin-bottom:10px}
 :root .app-shell.atlas-workspace:has(.projects-detail-head) .page-heading h1{font-size:24px}
 :root .app-shell.atlas-workspace:has(.projects-detail-head) .page-heading p{font-size:12px;margin-top:6px}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal){color:var(--atlas-ink);--green:var(--atlas-action);--ink:var(--atlas-ink);--muted:var(--atlas-muted);--line:var(--atlas-line)}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal){color:var(--atlas-ink);--control-ink:var(--atlas-action);--ink:var(--atlas-ink);--muted:var(--atlas-muted);--line:var(--atlas-line)}
 :root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) :is(.button,input,textarea,select){border-radius:7px}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button{color:var(--atlas-action);background:#fff;border:1px solid #d5e3d9;box-shadow:none;min-height:38px;font-weight:500}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button{color:var(--atlas-action);background:#fff;border:1px solid #e1e0dd;box-shadow:none;min-height:38px;font-weight:500}
 :root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button.primary{color:#fff;background:var(--atlas-action);border-color:var(--atlas-action)}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button.primary:hover{background:#22664f;border-color:#22664f}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button:not(.primary):hover{background:#f0f7f2;border-color:#b6cfc0}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button.primary:hover{background:#585754;border-color:#585754}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button:not(.primary):hover{background:#f7f6f3;border-color:#cbcac7}
 :root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .button:disabled{opacity:.48;cursor:not-allowed}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) :is(input,textarea,select){color:var(--atlas-ink);background:#fff;border-color:#ceddd2;box-shadow:none}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) :is(input,textarea,select):focus{border-color:#71a58b;outline:2px solid #28785f19;outline-offset:1px}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) :is(button,a,summary,[tabindex]):focus-visible,:root .atlas-workspace .sidebar :is(a,button):focus-visible{outline:2px solid #43886a;outline-offset:3px}
-:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .tag{color:#4e6c59;background:#f0f6ef;border-color:#dce8db;border-radius:5px}
-:root .atlas-workspace .modal{background:#fff;border:1px solid var(--atlas-line);border-radius:11px;box-shadow:0 18px 65px #294d3920}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) :is(input,textarea,select){color:var(--atlas-ink);background:#fff;border-color:#dbdad7;box-shadow:none}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) :is(input,textarea,select):focus{border-color:#9a9996;outline:2px solid #67666319;outline-offset:1px}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) :is(button,a,summary,[tabindex]):focus-visible,:root .atlas-workspace .sidebar :is(a,button):focus-visible{outline:2px solid #797875;outline-offset:3px}
+:root :is(.atlas-projects,.atlas-reader-modal,.atlas-workspace .modal) .tag{color:#666562;background:#f6f5f2;border-color:#e7e6e3;border-radius:5px}
+:root .atlas-workspace .modal{background:#fff;border:1px solid var(--atlas-line);border-radius:11px;box-shadow:0 18px 65px #46454220}
 :root .atlas-workspace .modal-head{background:#fff;border-color:var(--atlas-line)}
 :root .atlas-workspace .modal-head h2{color:var(--atlas-ink)}
 :root :is(.atlas-projects,.atlas-reader-modal) [hidden]{display:none!important}

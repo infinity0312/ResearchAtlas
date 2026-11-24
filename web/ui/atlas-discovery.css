@@ -8,7 +8,7 @@
 :root .app-shell.atlas-workspace .filter-group select{font-size:13px}
 :root .app-shell.atlas-workspace .segments{border:0;background:var(--atlas-ground);padding:3px;border-radius:6px}
 :root .app-shell.atlas-workspace .segments button{font-size:12px;color:var(--atlas-muted);padding:7px 12px;border-radius:5px}
-:root .app-shell.atlas-workspace .segments button.selected{background:#fff;color:var(--atlas-action);box-shadow:0 1px 4px #254c3810}
+:root .app-shell.atlas-workspace .segments button.selected{background:#fff;color:var(--atlas-action);box-shadow:0 1px 4px #44434010}
 :root .app-shell.atlas-workspace .scope-note{font-size:11px;color:var(--atlas-muted)}
 :root .app-shell.atlas-workspace .panel{background:#fff;border-color:var(--atlas-line);border-radius:9px;box-shadow:none}
 :root .app-shell.atlas-workspace .panel-title{padding:20px 24px 16px}
@@ -21,20 +21,20 @@
 :root .app-shell.atlas-workspace .search-input{flex:1;max-width:680px;min-width:min(100%,220px)}
 :root .app-shell.atlas-workspace .search-input input{width:100%;font-size:14px;padding-block:8px}
 :root .app-shell.atlas-workspace .paper-row{padding:21px 24px;gap:15px;border-color:var(--atlas-line);align-items:flex-start;transition:background 140ms}
-:root .app-shell.atlas-workspace .paper-row:hover{background:#fbfdfb}
-:root .app-shell.atlas-workspace .paper-row-expanded{background:#fbfdfb}
+:root .app-shell.atlas-workspace .paper-row:hover{background:#fefdfa}
+:root .app-shell.atlas-workspace .paper-row-expanded{background:#fefdfa}
 :root .app-shell.atlas-workspace .paper-body{min-width:0;flex:1}
-:root .app-shell.atlas-workspace .paper-mark{width:28px;min-width:28px;height:32px;padding:0;border:0;background:transparent;color:#8fb29d}
+:root .app-shell.atlas-workspace .paper-mark{width:28px;min-width:28px;height:32px;padding:0;border:0;background:transparent;color:#abaaa7}
 :root .app-shell.atlas-workspace .paper-title{display:block;text-align:left;max-width:1100px;font-size:17px;font-weight:550;line-height:1.65;color:var(--atlas-ink);overflow-wrap:anywhere;margin:6px 0 8px}
 :root .app-shell.atlas-workspace .paper-title:hover{color:var(--atlas-action)}
 :root .app-shell.atlas-workspace .paper-meta{font-size:11px;line-height:1.8;gap:8px;color:var(--atlas-muted)}
-:root .app-shell.atlas-workspace .abstract{font-size:14px;line-height:1.85;color:#61766a;max-width:1040px;margin-bottom:12px}
+:root .app-shell.atlas-workspace .abstract{font-size:14px;line-height:1.85;color:#73726f;max-width:1040px;margin-bottom:12px}
 :root .app-shell.atlas-workspace .paper-bottom{font-size:11px;line-height:1.8;gap:12px;color:var(--atlas-muted);justify-content:flex-start;flex-wrap:wrap}
 :root .app-shell.atlas-workspace .bookmark,:root .app-shell.atlas-workspace .open-paper{margin-top:8px;flex:none}
 :root .app-shell.atlas-workspace .paper-brief-toggle{display:flex;align-items:center;gap:8px;padding:7px 0;margin-top:8px;font-size:12px;color:var(--atlas-action);min-height:32px}
 :root .app-shell.atlas-workspace .paper-brief-toggle svg{transition:transform 140ms}
 :root .app-shell.atlas-workspace .paper-brief-toggle[aria-expanded=true] svg{transform:rotate(180deg)}
-:root .app-shell.atlas-workspace .paper-inline-brief{margin:10px 0 0;padding:20px 22px;background:#fff;border:1px solid var(--atlas-line);border-radius:8px;box-shadow:0 8px 24px #294d3908;max-width:1080px;overflow-wrap:anywhere}
+:root .app-shell.atlas-workspace .paper-inline-brief{margin:10px 0 0;padding:20px 22px;background:#fff;border:1px solid var(--atlas-line);border-radius:8px;box-shadow:0 8px 24px #46454208;max-width:1080px;overflow-wrap:anywhere}
 :root .app-shell.atlas-workspace .paper-brief-section+.paper-brief-section{border-top:1px solid var(--atlas-line);margin-top:20px;padding-top:18px}
 :root .app-shell.atlas-workspace .paper-brief-label{display:block;color:var(--atlas-muted);font-size:11px;margin-bottom:10px}
 :root .app-shell.atlas-workspace .paper-brief-section p{font-size:14px;line-height:1.9;max-width:920px;color:var(--atlas-ink);white-space:pre-wrap}
@@ -85,7 +85,7 @@
 
 /* Keep navigation controls and the active plot in the same visible workspace. */
 :root .atlas-workspace .paper-view:not(.spatial-paper-view) .pv-matrix-navigation{position:sticky;top:50px;z-index:8;background:#fffffff7;border-bottom:1px solid var(--atlas-line)}
-:root .atlas-workspace .spatial-paper-view .relief-toolbar{position:sticky;top:50px;z-index:8;background:#f7faf8;min-height:56px;padding:8px 16px}
+:root .atlas-workspace .spatial-paper-view .relief-toolbar{position:sticky;top:50px;z-index:8;background:#fbfaf7;min-height:56px;padding:8px 16px}
 :root .atlas-workspace .spatial-paper-view .relief-scale{position:sticky;top:106px;z-index:7;background:#fff;min-height:24px}
 :root .atlas-workspace .paper-view .paper-view-chart{scroll-margin-top:150px}
 @media(max-width:800px){:root .atlas-workspace .paper-view .paper-view-chart{scroll-margin-top:200px}}

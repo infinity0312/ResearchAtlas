@@ -1,9 +1,9 @@
 import type {GraphData} from './GraphCanvas';
-export function paperColor(id:string,industrial=false){
+export function paperColor(id:string){
  let hash=2166136261;
  for(const character of id)hash=Math.imul(hash^character.charCodeAt(0),16777619);
- if(!industrial)return `hsl(${(hash>>>0)%360} 48% 48%)`;
- // Keep papers individually distinguishable with warm and cool hues outside the green range.
+
+ // Allocate distinct paper colors across warm and cool ranges.
  const hue=(hash>>>0)%209;
  return `hsl(${hue<49?hue:hue+151} 38% 45%)`;
 }

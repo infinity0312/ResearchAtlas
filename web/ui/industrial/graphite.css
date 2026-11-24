@@ -68,7 +68,7 @@
   box-shadow: none;
 }
 
-:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.button:not(.primary,.danger):hover,.tag:not(.green,.red,.amber,.orange,.blue,.purple),.pdf-toolbar,.analysis-summary,.analysis-quality,.analysis-quality-expand,.lesson-expansion,.paper-project-actions,.note-preview,.notes-welcome,.note-source,.method-mappings,.graph-research-result,.trend-reading article,.trend-details table,.signal-method) {
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.button:not(.primary,.danger):hover,.tag:not(.steel,.red,.amber,.orange,.blue,.purple),.pdf-toolbar,.analysis-summary,.analysis-quality,.analysis-quality-expand,.lesson-expansion,.paper-project-actions,.note-preview,.notes-welcome,.note-source,.method-mappings,.graph-research-result,.trend-reading article,.trend-details table,.signal-method) {
   border-color: var(--atlas-line);
 }
 
@@ -78,7 +78,7 @@
   color: var(--atlas-ink);
 }
 
-:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.tag.green,.projects-stance.supports,.projects-valid,.job-status-badge.running,.job-status-badge.done,.analysis-quality-status.verified,.analysis-quality-compact.verified) {
+:root[data-edition=industrial] :is(.app-shell.atlas-workspace,.app-shell,.overlay) :is(.tag.steel,.projects-stance.supports,.projects-valid,.job-status-badge.running,.job-status-badge.done,.analysis-quality-status.verified,.analysis-quality-compact.verified) {
   color: var(--atlas-steel);
   background-color: var(--atlas-steel-wash);
   border-color: var(--atlas-steel-rule);
@@ -108,14 +108,6 @@
 
 :root[data-edition=industrial] :is(.app-shell,.overlay) .tag-kind.method {
   color: var(--atlas-steel);
-}
-
-:root[data-edition=industrial] body .is-scrolling {
-  scrollbar-color: var(--atlas-rule-strong) transparent;
-}
-
-:root[data-edition=industrial] body .is-scrolling::-webkit-scrollbar-thumb {
-  background-color: var(--atlas-rule-strong);
 }
 
 :root[data-edition=industrial] :is(.app-shell,.overlay) :is(.status-dot:not(.amber),.progress > i,.legend > i) {
@@ -200,7 +192,7 @@
     border-color: var(--atlas-line);
     border-radius: 3px;
     box-shadow: 0 8px 24px #26262620;
-    scrollbar-color: var(--atlas-rule-strong) transparent;
+    scrollbar-color: var(--industrial-ruler) transparent;
   }
   :root[data-edition=industrial] .app-shell select option {
     color: var(--atlas-ink);
@@ -224,11 +216,10 @@
 }
 
 /* Theme all scrolling surfaces, including lazily loaded panels and native pickers. */
-:root[data-edition=industrial] body *,
-:root[data-edition=industrial] body .is-scrolling {
-  scrollbar-color: #aaa8a0 transparent !important;
+:root[data-edition=industrial],
+:root[data-edition=industrial] body * {
+  scrollbar-color: var(--industrial-ruler) transparent;
 }
-:root[data-edition=industrial] body *::-webkit-scrollbar-thumb,
-:root[data-edition=industrial] body .is-scrolling::-webkit-scrollbar-thumb {
-  background-color: #aaa8a0 !important;
-}:root[data-edition=industrial] { scrollbar-color: #aaa8a0 transparent; }
+:root[data-edition=industrial] ::-webkit-scrollbar-thumb {
+  background-color: var(--industrial-ruler);
+}

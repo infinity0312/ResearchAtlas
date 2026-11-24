@@ -25,7 +25,7 @@ class Domain(Base):
     name: Mapped[str] = mapped_column(String(100))
     description: Mapped[str] = mapped_column(Text, default='')
     query: Mapped[str] = mapped_column(Text)
-    color: Mapped[str] = mapped_column(String, default='#327c72')
+    color: Mapped[str] = mapped_column(String, default='#496983')
     topics: Mapped[list] = mapped_column(JSON, default=list)
     definitions: Mapped[list] = mapped_column(JSON, default=list)
     taxonomy_version: Mapped[int] = mapped_column(Integer, default=1)
@@ -155,7 +155,7 @@ class TrendSeries(Base):
     id: Mapped[str]=mapped_column(String,primary_key=True,default=lambda:uuid.uuid4().hex)
     name: Mapped[str]=mapped_column(String(80))
     query: Mapped[str]=mapped_column(Text)
-    color: Mapped[str]=mapped_column(String,default='#327c72')
+    color: Mapped[str]=mapped_column(String,default='#496983')
 
 class TrendCount(Base):
     __tablename__='trend_counts'
@@ -221,7 +221,7 @@ def init_db():
     with Session.begin() as s:
         if not s.get(Domain, 'molecules'):
             for d in [
-                Domain(id='molecules', name='分子与材料', description='分子设计、材料发现与科学机器学习', query='(cat:cond-mat.mtrl-sci OR cat:physics.chem-ph) AND (all:"machine learning" OR all:"neural" OR all:"generative")', color='#327c72', topics=['性质预测','分子生成','材料逆向设计','势能与模拟']),
+                Domain(id='molecules', name='分子与材料', description='分子设计、材料发现与科学机器学习', query='(cat:cond-mat.mtrl-sci OR cat:physics.chem-ph) AND (all:"machine learning" OR all:"neural" OR all:"generative")', color='#496983', topics=['性质预测','分子生成','材料逆向设计','势能与模拟']),
                 Domain(id='life', name='生命科学', description='蛋白质、基因组与细胞智能', query='(cat:q-bio.BM OR cat:q-bio.GN OR cat:q-bio.QM) AND (all:"learning" OR all:"model" OR all:"prediction")', color='#9b7cbd', topics=['蛋白质结构','蛋白质设计','基因组学','单细胞分析']),
                 Domain(id='ml', name='机器学习', description='表示学习、模型方法与基础研究', query='cat:cs.LG', color='#ba8741', topics=['表示学习','生成模型','优化与泛化','强化学习'], auto_sync=False),
             ]:

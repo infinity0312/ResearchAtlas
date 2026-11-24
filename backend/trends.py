@@ -15,12 +15,13 @@ router=APIRouter(prefix='/api/trends')
 PRESETS=[('分子性质预测','(ti:"molecular property" OR abs:"molecular property prediction")'),('分子生成','(ti:"molecular generation" OR abs:"molecule generation" OR abs:"de novo drug design")'),('材料逆向设计','(abs:"inverse design" AND (abs:material OR abs:materials))'),('机器学习原子势','(abs:"machine learning potential" OR abs:"machine-learned interatomic" OR abs:"neural network potential")'),('蛋白质结构','(abs:"protein structure prediction" OR ti:AlphaFold)'),('蛋白质设计','(abs:"protein design" OR abs:"protein generation")'),('基因组学','(abs:genomics OR abs:genomic) AND (abs:learning OR abs:neural)'),('单细胞分析','(abs:"single-cell" OR abs:"single cell") AND (abs:learning OR abs:neural)'),('表示学习','(ti:"representation learning" OR abs:"representation learning")'),('生成模型','(ti:"generative model" OR abs:"diffusion model" OR abs:"flow matching")'),('优化与泛化','(ti:generalization OR ti:optimization) AND (abs:"machine learning" OR abs:"deep learning")'),('强化学习','(ti:"reinforcement learning" OR abs:"reinforcement learning")')]
 def series_colors(s):
     ids=list(s.scalars(select(TrendSeries.id).order_by(TrendSeries.id)))
-    return {id:f'hsl({(i*137.508+165)%360:.1f} 52% 43%)' for i,id in enumerate(ids)}
+    hues=((index*137.508+165)%209 for index in range(len(ids)))
+    return {id:f'hsl({hue if hue<49 else hue+151:.1f} 52% 43%)' for id,hue in zip(ids,hues)}
 
 def seed_series():
     with Session.begin() as s:
         if s.scalar(select(TrendSeries.id).limit(1)):return
-        for i,(name,query) in enumerate(PRESETS):s.add(TrendSeries(id=f'preset-{i}',name=name,query=query,color=['#327c72','#9671b2','#bd8742','#547eb1','#b06c7f','#7e964b'][i%6]))
+        for i,(name,query) in enumerate(PRESETS):s.add(TrendSeries(id=f'preset-{i}',name=name,query=query,color=['#496983','#9671b2','#bd8742','#547eb1','#b06c7f','#6a718c'][i%6]))
 class SeriesInput(BaseModel):
     name:str=Field(min_length=1,max_length=80)
     query:str=Field(min_length=3,max_length=2000)

@@ -2,13 +2,18 @@ import {expect,test} from '@playwright/test';
 import {editionSwatch} from '../../web/ui/industrial/colors';
 import {paperColor} from '../../web/graphProjection';
 
-test('industrial display translates legacy defaults and keeps individually assigned colors',()=>{
+test('industrial display translates legacy swatches and generated hues',()=>{
  expect(editionSwatch('#327C72','industrial')).toBe('#496983');
  expect(editionSwatch('#7e964b','industrial')).toBe('#6a718c');
- expect(editionSwatch('#318845','industrial')).toBe('#318845');
+ expect(editionSwatch('#318845','industrial')).toBe('#496983');
+ expect(editionSwatch('#ac8','industrial')).toBe('#6a718c');
+ expect(editionSwatch('#b06c7f','industrial')).toBe('#b06c7f');
+ expect(editionSwatch('hsl(165.0 52% 43%)','industrial')).toBe('hsl(260 52% 43%)');
+ expect(editionSwatch('hsl(305 52% 43%)','industrial')).toBe('hsl(305 52% 43%)');
+ expect(editionSwatch('seaGreen','industrial')).toBe('#496983');
  expect(editionSwatch('#327c72','classic')).toBe('#327c72');
  for(const id of ['2609.00000','first','method','archive']){
-  const hue=Number(paperColor(id,true).match(/hsl\((\d+)/)?.[1]);
+  const hue=Number(paperColor(id).match(/hsl\((\d+)/)?.[1]);
   expect(hue<=48||hue>=200).toBe(true);
  }
 });
@@ -16,6 +21,7 @@ test('industrial display translates legacy defaults and keeps individually assig
 test('the brand, domain swatch and reader evidence use the graphite edition',async({page,request})=>{
  await page.addInitScript(()=>localStorage.setItem('atlas.appearance.v1',JSON.stringify({edition:'industrial',motion:'reduced'})));
  await page.goto('/#page=papers&days=0');
+ await expect(page.locator('html')).toHaveCSS('scrollbar-color','rgb(170, 168, 160) rgba(0, 0, 0, 0)');
  const logo=page.locator('.brand img');
  await expect(logo).toHaveAttribute('src','/favicon.svg?v=2');
  await expect(page.locator('link[rel=icon]')).toHaveAttribute('href','/favicon.svg?v=2');
@@ -32,6 +38,6 @@ test('the brand, domain swatch and reader evidence use the graphite edition',asy
  if(process.env.ATLAS_UI_PREVIEWS)await page.screenshot({path:process.env.ATLAS_UI_PREVIEWS+'/graphite-library.png'});
  await page.getByRole('button',{name:'Equivariant models for molecular prediction',exact:true}).click();
  const reader=page.getByRole('dialog',{name:'论文阅读'});
- await expect(reader.locator('.tag.green').first()).toHaveCSS('color','rgb(73, 105, 131)');
+ await expect(reader.locator('.tag.steel').first()).toHaveCSS('color','rgb(73, 105, 131)');
  if(process.env.ATLAS_UI_PREVIEWS)await page.screenshot({path:process.env.ATLAS_UI_PREVIEWS+'/graphite-reader.png'});
 });

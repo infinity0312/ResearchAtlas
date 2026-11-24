@@ -12,9 +12,9 @@ type Meta=Omit<Note,'content'>;
 const extensions=[markdown(),EditorView.lineWrapping,EditorView.theme({
  '&':{fontSize:'14px'},'.cm-scroller':{fontFamily:'Consolas, "Microsoft YaHei", monospace',lineHeight:'1.85'},
  '.cm-content':{padding:'16px 0',fontFamily:'inherit',lineHeight:'inherit'},
- '.cm-line':{padding:'0 18px'},'.cm-gutters':{fontFamily:'inherit',fontSize:'12px',lineHeight:'inherit',borderRight:'1px solid #e8eee9',background:'transparent'},
+ '.cm-line':{padding:'0 18px'},'.cm-gutters':{fontFamily:'inherit',fontSize:'12px',lineHeight:'inherit',borderRight:'1px solid #ececec',background:'transparent'},
  '.cm-lineNumbers .cm-gutterElement':{padding:'0 12px 0 10px',minWidth:'44px',textAlign:'right'},
- '.cm-activeLineGutter':{background:'#edf3ed',color:'#5d7d6c'},'.cm-activeLine':{background:'#f2f6f0'},
+ '.cm-activeLineGutter':{background:'#f1f1f1',color:'#757575'},'.cm-activeLine':{background:'#f5f5f5'},
  '.cm-focused':{outline:'none'}
 })];
 export default function Notes(){

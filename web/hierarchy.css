@@ -1,23 +1,23 @@
 /* A complete domain overview; expansion owns density, not a clipped scroll box. */
-.hierarchy-panel .tree-navigation{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:0 24px 16px;color:#61736a;font-size:12px}
+.hierarchy-panel .tree-navigation{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:0 24px 16px;color:#71706d;font-size:12px}
 .hierarchy-panel .taxonomy-tree{max-height:none;overflow:visible;padding:0 24px 24px;min-width:0}
-.hierarchy-panel .tree-root{width:auto;background:transparent;border-bottom:1px solid #e3ebe6;border-radius:0;padding:10px 0;color:#36584a;font-size:13px}
+.hierarchy-panel .tree-root{width:auto;background:transparent;border-bottom:1px solid #ebeae7;border-radius:0;padding:10px 0;color:#52514e;font-size:13px}
 .hierarchy-panel .taxonomy-tree .tree-domain-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:18px;margin:0;padding:16px 0 0;border:0;align-items:start}
-.hierarchy-panel .tree-domain-list>li{margin:0;min-width:0;border:1px solid #e3ebe6;border-radius:8px;background:#fff}
+.hierarchy-panel .tree-domain-list>li{margin:0;min-width:0;border:1px solid #ebeae7;border-radius:8px;background:#fff}
 .hierarchy-panel .tree-domain-list>li:before{display:none}
-.hierarchy-panel .tree-domain{padding:14px;overflow-wrap:anywhere;color:#304f41;list-style-position:inside}
+.hierarchy-panel .tree-domain{padding:14px;overflow-wrap:anywhere;color:#494845;list-style-position:inside}
 .hierarchy-panel .tree-domain>span:first-child{font-weight:600;line-height:1.8}
-.hierarchy-panel .tree-domain-count{display:block;font-size:12px;font-weight:400;color:#61736a;margin-top:5px}
-.hierarchy-panel .tree-domain small{display:block;margin:4px 0 0;font-size:11px;color:#728178;line-height:1.6}
-.hierarchy-panel .taxonomy-tree ul:not(.tree-domain-list){margin-left:12px;padding:2px 12px 8px 16px;border-color:#e3ebe6;min-width:0}
+.hierarchy-panel .tree-domain-count{display:block;font-size:12px;font-weight:400;color:#71706d;margin-top:5px}
+.hierarchy-panel .tree-domain small{display:block;margin:4px 0 0;font-size:11px;color:#7f7e7b;line-height:1.6}
+.hierarchy-panel .taxonomy-tree ul:not(.tree-domain-list){margin-left:12px;padding:2px 12px 8px 16px;border-color:#ebeae7;min-width:0}
 .hierarchy-panel .taxonomy-tree li{min-width:0}
-.hierarchy-panel .taxonomy-tree li:before{left:-16px;width:12px;border-color:#e3ebe6}
+.hierarchy-panel .taxonomy-tree li:before{left:-16px;width:12px;border-color:#ebeae7}
 .hierarchy-panel .tree-topic{font-size:13px;padding:9px 4px;overflow-wrap:anywhere;line-height:1.8}
-.hierarchy-panel .tree-topic>.tree-topic-name{margin:0;padding:0;background:none;border-radius:0;color:#36584a;font-size:13px}
-.hierarchy-panel .tree-topic>span:not(.tree-topic-name){white-space:nowrap;font-size:11px;background:#f1f6f2;color:#5c7769}
-.hierarchy-panel .tree-paper{max-width:100%;min-width:0;padding:12px 10px;gap:8px;border-color:#e3ebe6;background:#fff;transform:none;font-size:12px;line-height:1.8}
+.hierarchy-panel .tree-topic>.tree-topic-name{margin:0;padding:0;background:none;border-radius:0;color:#52514e;font-size:13px}
+.hierarchy-panel .tree-topic>span:not(.tree-topic-name){white-space:nowrap;font-size:11px;background:#f7f6f3;color:#72716e}
+.hierarchy-panel .tree-paper{max-width:100%;min-width:0;padding:12px 10px;gap:8px;border-color:#ebeae7;background:#fff;transform:none;font-size:12px;line-height:1.8}
 .hierarchy-panel .tree-paper>span{min-width:0;overflow-wrap:anywhere;word-break:normal}
-.hierarchy-panel .tree-paper small{font-size:11px;color:#61736a;overflow-wrap:anywhere}
-.hierarchy-panel .tree-paper:hover,.hierarchy-panel .tree-paper.selected{background:#f1f6f2;transform:none;border-color:#9bbdaa}
-.hierarchy-panel .tree-empty{color:#728178;line-height:1.8;overflow-wrap:anywhere}
+.hierarchy-panel .tree-paper small{font-size:11px;color:#71706d;overflow-wrap:anywhere}
+.hierarchy-panel .tree-paper:hover,.hierarchy-panel .tree-paper.selected{background:#f7f6f3;transform:none;border-color:#b6b5b2}
+.hierarchy-panel .tree-empty{color:#7f7e7b;line-height:1.8;overflow-wrap:anywhere}
 @media(max-width:650px){.hierarchy-panel .taxonomy-tree{padding:0 12px 16px}.hierarchy-panel .tree-navigation{padding:0 16px 12px}.hierarchy-panel .taxonomy-tree ul:not(.tree-domain-list){margin-left:5px;padding-right:7px;padding-left:12px}.hierarchy-panel .taxonomy-tree li:before{left:-12px;width:9px}.hierarchy-panel .tree-domain{padding:12px}.hierarchy-panel .tree-paper{font-size:12px}}

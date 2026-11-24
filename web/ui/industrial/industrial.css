@@ -36,7 +36,7 @@
   --ink: var(--atlas-ink);
   --muted: var(--atlas-muted);
   --line: var(--atlas-line);
-  --green: var(--atlas-action);
+  --control-ink: var(--atlas-action);
   --accent: var(--atlas-soft);
   --radius: 4px;
   color: var(--atlas-ink);
