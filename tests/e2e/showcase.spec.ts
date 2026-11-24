@@ -1,6 +1,28 @@
 import {readFile} from 'node:fs/promises';
 import {expect, test} from '@playwright/test';
 
+test('the product page leads with workbench screenshots and keeps the case separate', async ({page, request}) => {
+  await page.setViewportSize({width: 390, height: 844});
+  await page.goto('/showcase/');
+  const gallery = page.locator('figure.showcase-product-image');
+  await expect(gallery).toHaveCount(4);
+  for (const figure of await gallery.all()) {
+    await figure.scrollIntoViewIfNeeded();
+    await expect.poll(() => figure.locator('img').evaluate(image => (image as HTMLImageElement).naturalWidth))
+      .toBeGreaterThan(900);
+    const link = await figure.getByRole('link').getAttribute('href');
+    const original = await request.get(new URL(link!, page.url()).href);
+    expect(original.headers()['content-type']).toMatch(/^image\/png/);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  await expect(page.getByRole('heading', {name: '走完一项研发决策'})).toHaveCount(0);
+  await page.getByRole('link', {name: '体验材料评审'}).click();
+  await expect(page).toHaveURL(/\?view=demo#demo$/);
+  await expect(page.getByRole('heading', {name: '走完一项研发决策'})).toBeVisible();
+  await page.getByRole('link', {name: '返回产品展示'}).click();
+  await expect(gallery).toHaveCount(4);
+});
+
 test('from an external source to a frozen decision and a targeted version review', async ({page, request}) => {
   const errors: string[] = [];
   const apiRequests: string[] = [];

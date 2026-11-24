@@ -181,6 +181,22 @@
 :root[data-edition=industrial] .overlay .linked-source-quote {
   border-inline-start: 2px solid var(--atlas-action);
 }
+:root[data-edition=industrial] .atlas-projects .linked-source-quote {
+  background: var(--atlas-soft);
+  border-inline-start: 2px solid var(--atlas-action);
+}
+.atlas-projects .project-source-pdf .pdf-toolbar label {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  white-space: nowrap;
+}
+.atlas-projects .project-source-pdf .pdf-toolbar input {
+  width: 4.25rem;
+  margin: 0;
+  text-align: center;
+}
 :root[data-edition=industrial] .linked-source-coordinate .ef-marker { color: var(--atlas-ink); }
 :root[data-edition=industrial][data-motion=full] .linked-source-coordinate .ef-marker {
   animation: ef-wipe-in 180ms var(--industrial-mech) both;
