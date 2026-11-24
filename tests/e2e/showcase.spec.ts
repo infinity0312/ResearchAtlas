@@ -1,11 +1,17 @@
 import {readFile} from 'node:fs/promises';
 import {expect, test} from '@playwright/test';
 
-test('the product page leads with workbench screenshots and keeps the case separate', async ({page, request}) => {
+test('the product page leads with AI reading and keeps the case separate', async ({page, request}) => {
   await page.setViewportSize({width: 390, height: 844});
   await page.goto('/showcase/');
   const gallery = page.locator('figure.showcase-product-image');
-  await expect(gallery).toHaveCount(4);
+  await expect(gallery).toHaveCount(9);
+  await expect(gallery.first().locator('img')).toHaveAttribute('src', './media/paper-evidence.png');
+  await page.getByRole('link', {name: '看 AI 研读'}).click();
+  await expect(page).toHaveURL(/#reading$/);
+  const reading = page.getByRole('region', {name: '一篇论文怎样读深'});
+  await expect(reading.getByRole('figure')).toHaveCount(3);
+  await expect(reading.getByRole('link', {name: '论文原页'})).toHaveAttribute('href', 'https://arxiv.org/pdf/2603.22733v1#page=9');
   for (const figure of await gallery.all()) {
     await figure.scrollIntoViewIfNeeded();
     await expect.poll(() => figure.locator('img').evaluate(image => (image as HTMLImageElement).naturalWidth))
@@ -20,7 +26,7 @@ test('the product page leads with workbench screenshots and keeps the case separ
   await expect(page).toHaveURL(/\?view=demo#demo$/);
   await expect(page.getByRole('heading', {name: '走完一项研发决策'})).toBeVisible();
   await page.getByRole('link', {name: '返回产品展示'}).click();
-  await expect(gallery).toHaveCount(4);
+  await expect(gallery).toHaveCount(9);
 });
 
 test('from an external source to a frozen decision and a targeted version review', async ({page, request}) => {
@@ -32,7 +38,7 @@ test('from an external source to a frozen decision and a targeted version review
     return route.abort();
   });
   await page.goto('/showcase/');
-  await expect(page.getByRole('heading', {level: 1})).toHaveText('把研究证据带进研发决策');
+  await expect(page.getByRole('heading', {level: 1})).toHaveText('用 AI 读懂论文，回到原文核对');
   await page.getByRole('link', {name: '体验材料评审'}).click();
   await page.getByRole('button', {name: '检索样例语料'}).click();
   const results = page.getByRole('region', {name: '检索结果'});

@@ -10,6 +10,7 @@ test('paper questions render math, persist history and navigate original evidenc
  await page.goto('/#page=papers');await page.getByRole('button',{name:'Equivariant models for molecular prediction',exact:true}).click();
  await page.getByRole('button',{name:'提问记录',exact:true}).click();
  await page.getByLabel('针对本文提问').fill('请解释量化误差');await page.getByRole('button',{name:'发送问题',exact:true}).click();
+ await expect(page.getByText('test · 已解析全文',{exact:true})).toBeVisible();
  await expect(page.locator('.chat-answer .katex')).toHaveCount(1);await expect(page.locator('.chat-answer li')).toHaveCount(2);
  await page.locator('.chat-sources summary').click();await expect(page.locator('.chat-sources')).toContainText('Original method evidence');
  await page.getByRole('button',{name:'在 PDF 中查看',exact:true}).click();await expect(page.locator('.pdf-reading')).toBeVisible();

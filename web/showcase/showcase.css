@@ -58,8 +58,6 @@ button:disabled { cursor: default; }
     url('../ui/industrial/endfield-contour.svg') center 35% / min(1120px, 93vw) auto no-repeat;
 }
 .showcase-intro { margin-inline: auto; text-align: center; }
-.showcase-overline { display: flex; justify-content: center; gap: 11px; align-items: center; font-size: .87rem; letter-spacing: .14em; font-weight: 680; }
-.showcase-overline::before { content: ''; display: block; width: 13px; height: 10px; background: var(--industrial-signal); border: 1px solid #777134; clip-path: polygon(0 0, 75% 0, 100% 35%, 100% 100%, 0 100%); }
 .showcase-intro h1 { margin-block: 14px 16px; font-size: clamp(2.5rem, 4.7vw, 4.7rem); line-height: 1.14; letter-spacing: -.052em; font-weight: 790; }
 .showcase-mobile-break { display: none; }
 .showcase-intro > p:last-of-type { max-width: 44em; margin-inline: auto; color: var(--atlas-muted); font-size: clamp(.98rem, 1.4vw, 1.12rem); text-wrap: balance; }
@@ -189,3 +187,9 @@ button:disabled { cursor: default; }
 @media (prefers-reduced-motion: reduce) {
   :root { scroll-behavior: auto; }
 }
+.showcase-library { background: #ecebe4; border-block: 1px solid var(--atlas-line); }
+.showcase-workspace-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 13px; margin-top: 23px; }
+.showcase-workspace-links a { display: block; padding: 16px 18px; background: var(--atlas-paper); border: 1px solid #a5a397; text-decoration: none; }
+.showcase-workspace-links a:hover { border-color: var(--atlas-ink); }
+.showcase-workspace-links strong { display: flex; align-items: center; gap: 8px; }
+.showcase-workspace-links span { display: block; margin-top: 4px; color: var(--atlas-muted); font-size: .88rem; }
